@@ -268,6 +268,22 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* Cyberpunk trader figure */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -50px;
+      width: 200px;
+      height: 300px;
+      background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDIwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9Im1hc2tHbG93IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwZDBmZiIgc3RvcC1vcGFjaXR5PSIwLjgiLz4KPHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiNmZjAwNDAiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmNjYwMCIgc3RvcC1vcGFjaXR5PSIwLjciLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8IS0tIEhvb2RlZCBmaWd1cmUgLS0+CjxyZWN0IHg9IjcwIiB5PSI4MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEyMCIgZmlsbD0iIzMzMCIgcng9IjEwIi8+CjwhLS0gSG9vZCAtLT4KPHBhdGggZD0iTTUwIDkwIEw5MCA1MCBMMTQ0IDUwIEwxNTAgOTAgWiIgZmlsbD0iIzUwMCIvPgo8IS0tIE1hc2sgYXJlYSAtLT4KPGVsbGlwc2UgY3g9IjEwMCIgY3k9IjEwMCIgcng9IjM1IiByeT0iNDAiIGZpbGw9IiMwMDAiLz4KPCEtLSBOZW9uIGV5ZSBlZmZlY3RzIC0tPgo8cGF0aCBkPSJNNzUgOTAgTDkwIDEwNSBNMTEwIDEwNSBMMTI1IDkwIiBzdHJva2U9InVybCgjbWFza0dsb3cpIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz4KPCEtLSBNb3V0aCBsaW5lIC0tPgo8cGF0aCBkPSJNODAgMTIwIEwxMDAgMTMwIEwxMjAgMTIwIiBzdHJva2U9InVybCgjbWFza0dsb3cpIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KPCEtLSBHbG93IGVmZmVjdCAtLT4KPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTAwIiByPSI2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI21hc2tHbG93KSIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjMiLz4KPC9zdmc+');
+      background-size: contain;
+      background-repeat: no-repeat;
+      opacity: 0.7;
+      z-index: -1;
+      animation: figureFloat 4s ease-in-out infinite;
+    }
+
     .btn-primary:hover {
       transform: scale(1.05) translateY(-2px);
       box-shadow: 0 8px 25px rgba(255, 0, 64, 0.7);
@@ -320,13 +336,13 @@
     }
 
     .package-card:nth-child(2) {
-      border-color: rgba(0, 208, 255, 0.6);
-      box-shadow: 0 8px 25px rgba(0, 208, 255, 0.4);
+      border-color: rgba(255, 102, 0, 0.6);
+      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
       transform: scale(1.05);
     }
 
     .package-card:nth-child(2):hover {
-      box-shadow: 0 15px 40px rgba(0, 208, 255, 0.6);
+      box-shadow: 0 15px 40px rgba(255, 102, 0, 0.6);
     }
 
     .package-card h3 {
@@ -338,8 +354,8 @@
     }
 
     .package-card:nth-child(2) h3 {
-      color: var(--neon-blue);
-      text-shadow: 0 0 10px var(--neon-blue);
+      color: var(--neon-orange);
+      text-shadow: 0 0 10px var(--neon-orange);
     }
 
     .package-price {
@@ -352,8 +368,8 @@
     }
 
     .package-card:nth-child(2) .package-price {
-      color: var(--neon-blue);
-      text-shadow: 0 0 15px var(--neon-blue);
+      color: var(--neon-orange);
+      text-shadow: 0 0 15px var(--neon-orange);
     }
 
     @keyframes priceGlow {
@@ -605,11 +621,7 @@
     <section class="hero" aria-label="Hero Bereich">
       <h2>15 Trading KIs in einem Indikator.<br>Welcome to the future.</h2>
       <p>Next-Gen Trading: Gewinne neu definiert.<br>Automatisiere deine Strategie, minimiere Fehler, maximiere Rendite.</p>
-      <div class="cta-section">
-        <button class="btn-primary" onclick="document.querySelector('.packages').scrollIntoView({behavior: 'smooth'})">
-          Jetzt entdecken
-        </button>
-      </div>
+
     </section>
 
     <section class="packages" aria-label="Angebotspakete">
@@ -623,7 +635,11 @@
           <li>Monatliches Marktupdate per PDF</li>
           <li>24/7 Email Support</li>
         </ul>
-        <button class="btn-primary" onclick="alert('Basic Paket wurde gewählt!')">Jetzt kaufen</button>
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+        <stripe-buy-button
+          buy-button-id="buy_btn_1RY94gQt7nyqcJPzq7suJFCQ"
+          publishable-key="pk_test_51RXrYeQt7nyqcJPzmYuv0wJONMT9vaUVteuAgOWz76ltE4d6GSRGwy9A0WGVY4pMjXUoT9iPXzRaI2U76hSdUTOt00RNSCOo0I">
+        </stripe-buy-button>
       </div>
 
       <div class="package-card">
@@ -638,7 +654,11 @@
           <li>Lifetime Zugang</li>
           <li>Priority Support</li>
         </ul>
-        <button class="btn-primary" onclick="alert('Pro Paket wurde gewählt!')">Jetzt kaufen</button>
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+        <stripe-buy-button
+          buy-button-id="buy_btn_1RY94gQt7nyqcJPzq7suJFCQ"
+          publishable-key="pk_test_51RXrYeQt7nyqcJPzmYuv0wJONMT9vaUVteuAgOWz76ltE4d6GSRGwy9A0WGVY4pMjXUoT9iPXzRaI2U76hSdUTOt00RNSCOo0I">
+        </stripe-buy-button>
       </div>
 
       <div class="package-card">
@@ -653,7 +673,11 @@
           <li>1-on-1 Trading Sessions (monatlich)</li>
           <li>Custom Indikator Anpassungen</li>
         </ul>
-        <button class="btn-primary" onclick="alert('Premium Paket wurde gewählt!')">Jetzt kaufen</button>
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+        <stripe-buy-button
+          buy-button-id="buy_btn_1RY94gQt7nyqcJPzq7suJFCQ"
+          publishable-key="pk_test_51RXrYeQt7nyqcJPzmYuv0wJONMT9vaUVteuAgOWz76ltE4d6GSRGwy9A0WGVY4pMjXUoT9iPXzRaI2U76hSdUTOt00RNSCOo0I">
+        </stripe-buy-button>
       </div>
     </section>
 
