@@ -612,17 +612,6 @@
       position: relative;
     }
 
-    .online-users {
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.8rem;
-      background: rgba(0, 255, 136, 0.3);
-      padding: 0.2rem 0.5rem;
-      border-radius: 10px;
-    }
-
     .chat-messages {
       flex: 1;
       padding: 1rem;
@@ -799,7 +788,6 @@
     <div class="chat-container" id="chatContainer">
       <div class="chat-header">
         CryptX Leak Community Chat
-        <div class="online-users" id="onlineUsers">🟢 12 online</div>
       </div>
       <div class="chat-messages" id="chatMessages">
         <div class="chat-message user1">
@@ -919,7 +907,7 @@
     </section>
 
     <section class="ai-chat" aria-label="AI Support Chat">
-      <h3>Trading Basics: Frage unseren KI.</h3>
+      <h3>Hast du Fragen? Chatte mit unserer KI!</h3>
       <div class="chat-bot-container">
         <iframe 
           src="https://cdn.botpress.cloud/webchat/v3.0/shareable.html?configUrl=https://files.bpcontent.cloud/2025/06/09/18/20250609185818-DL13RK29.json"
@@ -981,18 +969,95 @@
   <script>
     // Chat Room Funktionalität
     let messageCount = 0;
+    let isBanned = false;
+    let userMessages = []; // Track user messages for repetition detection
     const userColors = ['user1', 'user2', 'user3'];
     const fakeUsers = ['TradingPro', 'CryptoMaster', 'SignalHunter', 'MoonTrader', 'DiamondHands'];
     const fakeMessages = [
-      'Gerade BTC gekauft! 🚀',
+      'Gerade Investment gemacht! 🚀',
       'CryptX Leak Signale sind 🔥',
-      'Wer ist auch bullish auf ETH?',
+      'Wer ist auch bullish auf den Markt?',
       'Beste Community ever! 💪',
       'Danke für die Tipps!',
       'Profits today 📈📈📈',
       'HODL strong! 💎',
       'Next stop: Moon! 🌙'
     ];
+
+    // Moderation - Banned words list
+    const bannedWords = [
+      'fuck', 'sex', 'fuck you', 'this is shit', 'scam', 'fake',
+      'bullshit', 'ass', 'bitch', 'damn', 'shit', 'crap',
+      'betrug', 'beschiss', 'scheisse', 'scheiß', 'arsch'
+    ];
+
+    // Banned coins list
+    const bannedCoins = [
+      'bitcoin', 'btc', 'ethereum', 'eth', 'ripple', 'xrp', 'cardano', 'ada',
+      'solana', 'sol', 'dogecoin', 'doge', 'litecoin', 'ltc', 'polkadot', 'dot',
+      'binance', 'bnb', 'chainlink', 'link', 'stellar', 'xlm', 'uniswap', 'uni',
+      'avalanche', 'avax', 'polygon', 'matic', 'tron', 'trx', 'cosmos', 'atom',
+      'algorand', 'algo', 'fantom', 'ftm', 'near', 'icp', 'filecoin', 'fil',
+      'mana', 'sand', 'axs', 'shib', 'pepe', 'floki', 'safemoon', 'usdt', 'usdc'
+    ];
+
+    function containsBannedWord(message) {
+      const lowerMessage = message.toLowerCase();
+      return bannedWords.some(word => lowerMessage.includes(word.toLowerCase()));
+    }
+
+    function containsBannedCoin(message) {
+      const lowerMessage = message.toLowerCase();
+      return bannedCoins.some(coin => lowerMessage.includes(coin.toLowerCase()));
+    }
+
+    function isRepeatedMessage(message, username) {
+      const userKey = username || 'Anonym';
+      const recentMessages = userMessages.filter(msg => 
+        msg.username === userKey && 
+        Date.now() - msg.timestamp < 300000 // Last 5 minutes
+      );
+      
+      // Check for exact repetition or very similar messages
+      return recentMessages.some(msg => {
+        const similarity = calculateSimilarity(msg.message.toLowerCase(), message.toLowerCase());
+        return similarity > 0.8; // 80% similarity threshold
+      });
+    }
+
+    function calculateSimilarity(str1, str2) {
+      const longer = str1.length > str2.length ? str1 : str2;
+      const shorter = str1.length > str2.length ? str2 : str1;
+      
+      if (longer.length === 0) return 1.0;
+      
+      const matches = longer.split('').filter((char, i) => char === shorter[i]).length;
+      return matches / longer.length;
+    }
+
+    function banUser(reason = 'unangemessene Sprache') {
+      isBanned = true;
+      const chatContainer = document.getElementById('chatContainer');
+      const messagesContainer = document.getElementById('chatMessages');
+      
+      // Clear chat and show ban message
+      messagesContainer.innerHTML = `
+        <div class="chat-message" style="background: rgba(255, 0, 64, 0.3); border: 2px solid rgba(255, 0, 64, 0.6); text-align: center; color: #fff; font-weight: bold;">
+          <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">🚫 GESPERRT</div>
+          <div>Du wurdest wegen ${reason} aus dem Chat ausgeschlossen.</div>
+          <div style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Bitte halte dich an unsere Community-Regeln.</div>
+        </div>
+      `;
+      
+      // Disable input
+      const chatInput = document.getElementById('chatInput');
+      const usernameInput = document.getElementById('usernameInput');
+      chatInput.disabled = true;
+      usernameInput.disabled = true;
+      chatInput.placeholder = "Du bist gesperrt.";
+      chatInput.style.opacity = "0.5";
+      usernameInput.style.opacity = "0.5";
+    }
 
     function toggleChat() {
       const container = document.getElementById('chatContainer');
@@ -1033,19 +1098,50 @@
         const randomMessage = fakeMessages[Math.floor(Math.random() * fakeMessages.length)];
         addMessage(randomUser, randomMessage);
         
-        // Update online count
-        const onlineCount = Math.floor(Math.random() * 5) + 8; // 8-12 online
-        document.getElementById('onlineUsers').textContent = `🟢 ${onlineCount} online`;
+        // No online count update needed anymore
       }, Math.random() * 20000 + 10000); // 10-30 seconds
     }
 
     function sendMessage() {
+      // Check if user is banned
+      if (isBanned) {
+        return;
+      }
+
       const input = document.getElementById('chatInput');
       const usernameInput = document.getElementById('usernameInput');
       const message = input.value.trim();
       const username = usernameInput.value.trim() || 'Anonym';
       
       if (message === '') return;
+      
+      // Check for banned words
+      if (containsBannedWord(message)) {
+        banUser('unangemessene Sprache');
+        return;
+      }
+
+      // Check for banned coins
+      if (containsBannedCoin(message)) {
+        banUser('Erwähnung spezifischer Coins');
+        return;
+      }
+
+      // Check for repeated messages
+      if (isRepeatedMessage(message, username)) {
+        banUser('wiederholende Nachrichten (Spam)');
+        return;
+      }
+      
+      // Store message for repetition detection
+      userMessages.push({
+        username: username,
+        message: message,
+        timestamp: Date.now()
+      });
+
+      // Keep only recent messages (last 5 minutes)
+      userMessages = userMessages.filter(msg => Date.now() - msg.timestamp < 300000);
       
       // Eigene Nachricht hinzufügen
       addMessage(username, message, true);
@@ -1055,17 +1151,19 @@
       
       // Simuliere Antwort nach 1-3 Sekunden
       setTimeout(() => {
-        const responses = [
-          'Nice! 🔥',
-          'Stimme zu! 💯',
-          'Guter Punkt! 👍',
-          'Thanks for sharing! 🙏',
-          'Bullish! 🚀',
-          'Diamond hands! 💎'
-        ];
-        const randomUser = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
-        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-        addMessage(randomUser, randomResponse);
+        if (!isBanned) {
+          const responses = [
+            'Nice! 🔥',
+            'Stimme zu! 💯',
+            'Guter Punkt! 👍',
+            'Thanks for sharing! 🙏',
+            'Bullish! 🚀',
+            'Diamond hands! 💎'
+          ];
+          const randomUser = fakeUsers[Math.floor(Math.random() * fakeUsers.length)];
+          const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+          addMessage(randomUser, randomResponse);
+        }
       }, Math.random() * 2000 + 1000);
     }
 
