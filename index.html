@@ -1,7 +1,3 @@
-# Re-execute the code since the environment was reset.
-# Display updated HTML with the requested changes again.
-
-html = """
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -25,9 +21,6 @@ html = """
     body {
       margin: 0; background: var(--dark-bg); color: var(--text-light);
       font-family: var(--font-sans); line-height: 1.5;
-      background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); /* Subtle cyberpunk-style texture */
-      background-attachment: fixed;
-      background-size: cover;
     }
 
     header {
@@ -52,14 +45,13 @@ html = """
     .hero h2 {
       font-size: 2.6rem; font-weight: 800;
       margin-bottom: 0.5rem; color: var(--neon-red);
-      text-shadow: 0 0 3px var(--neon-red), 0 0 8px var(--neon-red);
+      text-shadow: 0 0 6px var(--neon-red);
       white-space: pre-line;
     }
 
     .hero p {
-      font-size: 1.4rem; margin-bottom: 1.8rem;
-      color: var(--neon-blue);
-      text-shadow: 0 0 2px var(--neon-blue), 0 0 5px var(--neon-blue);
+      font-size: 1.2rem; margin-bottom: 1.8rem;
+      color: var(--neon-blue); text-shadow: 0 0 6px var(--neon-blue);
       white-space: pre-line;
     }
 
@@ -70,8 +62,6 @@ html = """
       cursor: pointer; box-shadow: 0 0 12px var(--neon-red);
       transition: transform 0.2s ease;
       border: none; text-decoration: none;
-      text-align: left; /* Align text inside the button to the left */
-      width: 100%;
     }
 
     .btn-primary:hover {
@@ -86,9 +76,8 @@ html = """
       background: #111; padding: 1.5rem; border-radius: 8px;
       width: 260px; box-shadow: 0 0 10px rgba(255, 102, 0, 0.7);
       color: var(--text-light);
-      display: flex; flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
     }
 
     .package-card h3 {
@@ -144,9 +133,93 @@ html = """
   </style>
 </head>
 <body>
+  <header><h1>KSWITCH</h1></header>
+  <main>
+    <section class="hero" aria-label="Hero Bereich">
+      <h2>15 Trading KIs in einem Indikator.<br>Welcome to the future.</h2>
+      <p>Next-Gen Trading: Gewinne neu definiert.<br>Automatisiere deine Strategie, minimiere Fehler, maximiere Rendite.</p>
+    </section>
+
+    <section class="packages" aria-label="Angebotspakete">
+      <div class="package-card">
+        <h3>Basic Paket</h3>
+        <div class="package-price">CHF 179.–</div>
+        <p>Ideal für Einsteiger</p>
+        <ul>
+          <li>✅ Zugang zu KSWITCH Indikator (Basisversion)</li>
+          <li>✅ Signale für BTC, ETH, SPX</li>
+          <li>✅ Monatliches Marktupdate per PDF</li>
+        </ul>
+        <a href="https://aycamukemmel.com"><button class="btn-primary" onclick="alert('Basic Paket wurde gewählt!')">Jetzt kaufen</button></a>
+      </div>
+
+      <div class="package-card">
+        <h3>🔥 Pro Paket</h3>
+        <div class="package-price">CHF 249.–</div>
+        <p>Für aktive Trader</p>
+        <ul>
+          <li>✅ Volle Indikator-Funktionalität (15 KIs)</li>
+          <li>✅ Multi-Asset Signale (Forex, Krypto, Aktien)</li>
+          <li>✅ Zugriff auf Video-Tutorials & PDF-Guides</li>
+          <li>✅ Zugang zur exklusiven KSWITCH Telegram-Community</li>
+          <li>✅ Lifetime Zugang</li>
+        </ul>
+        <button class="btn-primary" onclick="alert('Pro Paket wurde gewählt!')">Jetzt kaufen</button>
+      </div>
+
+      <div class="package-card">
+        <h3>Premium Paket</h3>
+        <div class="package-price">CHF 649.–</div>
+        <p>Volle Power für Profis</p>
+        <ul>
+          <li>🚀 Alle Funktionen aus dem Pro-Paket</li>
+          <li>✅ Persönlicher Onboarding-Call (30 Min)</li>
+          <li>✅ Kostenloser Zugang zu kommenden Tools & Updates</li>
+          <li>✅ Exklusive VIP-Community & Trading-Events</li>
+        </ul>
+        <button class="btn-primary" onclick="alert('Premium Paket wurde gewählt!')">Jetzt kaufen</button>
+      </div>
+    </section>
+
+    <section class="faq" aria-label="Häufig gestellte Fragen">
+      <h3>Häufig gestellte Fragen</h3>
+      <div class="faq-item">
+        <div class="faq-question">Was ist KSWITCH?</div>
+        <div class="faq-answer">KSWITCH ist ein hochentwickelter Trading-Indikator, der 15 verschiedene KI-Systeme in einem Tool kombiniert, um dir einen umfassenden Marktüberblick und präzise Handelssignale zu liefern.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Wie sicher sind die Signale?</div>
+        <div class="faq-answer">Unsere KIs basieren auf datengetriebenen Modellen und werden kontinuierlich optimiert. Kein System garantiert 100% Gewinn, aber wir liefern dir Tools, die deine Entscheidungen massiv verbessern.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Ist KSWITCH auch für Anfänger geeignet?</div>
+        <div class="faq-answer">Absolut. Das Basic Paket richtet sich speziell an Trading-Neulinge, mit verständlichen Signalen und monatlichen Marktupdates. Du kannst mitwachsen und später upgraden.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Wie bezahle ich?</div>
+        <div class="faq-answer">Wir akzeptieren sichere Zahlungen per Kreditkarte, PayPal und Banküberweisung. Deine Daten sind bei uns sicher verschlüsselt.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Was passiert nach dem Kauf?</div>
+        <div class="faq-answer">Du erhältst sofort Zugriff auf deinen Account, die Installationsanleitung und alle gebuchten Inhalte. Bei Premium gibt es einen Onboarding-Call, um dich optimal zu starten.</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // FAQ Toggle Funktion
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const answer = q.nextElementSibling;
+        if(answer.style.display === 'block'){
+          answer.style.display = 'none';
+        } else {
+          // Close all open answers first (optional, für bessere UX)
+          document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+          answer.style.display = 'block';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-"""
-
-from IPython.display import display, HTML
-display(HTML(html))
