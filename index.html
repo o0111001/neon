@@ -6,7 +6,764 @@
   <title>KSWITCH Community Tool – Trading Indikator</title>
   <style>
     :root {
+      --neon-red: #ff0040;<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CryptX Leak Community Tool – Trading Indikator</title>
+  <style>
+    :root {
       --neon-red: #ff0040;
+      --neon-blue: #00d0ff;
+      --neon-orange: #ff6600;
+      --neon-purple: #aa00ff;
+      --neon-green: #00ff88;
+      --dark-bg: #0a0a0a;
+      --dark-card: #111;
+      --text-light: #eee;
+      --text-muted: #777;
+      --btn-radius: 8px;
+      --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      --glow-intensity: 0.4;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0; 
+      background: var(--dark-bg); 
+      color: var(--text-light);
+      font-family: var(--font-sans); 
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Enhanced Matrix/Cyberpunk background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        /* Enhanced Matrix grid */
+        linear-gradient(90deg, rgba(0, 208, 255, 0.2) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0, 208, 255, 0.15) 1px, transparent 1px),
+        /* Dynamic diagonal patterns */
+        linear-gradient(45deg, transparent 30%, rgba(255, 0, 64, 0.12) 32%, rgba(255, 0, 64, 0.12) 34%, transparent 36%),
+        linear-gradient(-45deg, transparent 70%, rgba(255, 102, 0, 0.1) 72%, rgba(255, 102, 0, 0.1) 74%, transparent 76%),
+        linear-gradient(120deg, transparent 60%, rgba(170, 0, 255, 0.08) 62%, rgba(170, 0, 255, 0.08) 64%, transparent 66%),
+        /* Enhanced digital dots */
+        radial-gradient(circle at 20% 30%, rgba(0, 208, 255, 0.15) 1px, transparent 2px),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 64, 0.12) 1px, transparent 2px),
+        radial-gradient(circle at 60% 20%, rgba(0, 255, 136, 0.1) 1px, transparent 2px);
+      background-size: 25px 25px, 25px 25px, 100px 100px, 70px 70px, 90px 90px, 50px 50px, 80px 80px, 60px 60px;
+      animation: matrixFlow 15s linear infinite;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        /* Enhanced data streams */
+        linear-gradient(180deg, transparent 0%, rgba(0, 208, 255, 0.1) 15%, rgba(0, 208, 255, 0.2) 18%, rgba(0, 208, 255, 0.1) 21%, transparent 35%),
+        linear-gradient(180deg, transparent 40%, rgba(255, 0, 64, 0.08) 60%, rgba(255, 0, 64, 0.15) 63%, rgba(255, 0, 64, 0.08) 66%, transparent 80%),
+        linear-gradient(90deg, transparent 0%, rgba(170, 0, 255, 0.06) 25%, rgba(170, 0, 255, 0.12) 27%, rgba(170, 0, 255, 0.06) 29%, transparent 50%);
+      background-size: 180px 350px, 130px 300px, 200px 150px;
+      animation: dataStream 10s ease-in-out infinite;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes matrixFlow {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-25px, -25px) rotate(0.5deg); }
+    }
+
+    @keyframes dataStream {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+      33% { transform: translateY(-30px) translateX(10px); opacity: 0.9; }
+      66% { transform: translateY(-60px) translateX(-10px); opacity: 1; }
+    }
+
+    header {
+      position: sticky; 
+      top: 0; 
+      background: linear-gradient(135deg, rgba(0, 15, 30, 0.98) 0%, rgba(0, 25, 50, 0.95) 30%, rgba(10, 0, 30, 0.95) 70%, rgba(0, 15, 30, 0.98) 100%);
+      backdrop-filter: blur(15px);
+      padding: 1.2rem 2rem; 
+      text-align: center;
+      border-bottom: 2px solid rgba(0, 208, 255, 0.4); 
+      z-index: 1000;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 208, 255, 0.2);
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(90deg, rgba(0, 208, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(0, 208, 255, 0.08) 1px, transparent 1px);
+      background-size: 15px 15px;
+      animation: headerMatrix 20s linear infinite;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    @keyframes headerMatrix {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-15px, -15px); }
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tradingview-logo {
+      height: 40px;
+      width: auto;
+      filter: brightness(1.2) drop-shadow(0 0 8px rgba(0, 208, 255, 0.6));
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .tradingview-logo:hover {
+      transform: scale(1.1);
+      filter: brightness(1.4) drop-shadow(0 0 12px rgba(0, 208, 255, 0.8));
+    }
+
+    header h1 {
+      margin: 0; 
+      font-weight: 900; 
+      letter-spacing: 0.2em;
+      color: rgba(0, 208, 255, 0.95); 
+      font-size: 2rem;
+      text-shadow: 
+        0 0 8px rgba(0, 208, 255, 0.8),
+        0 0 16px rgba(0, 208, 255, 0.4),
+        0 0 24px rgba(0, 208, 255, 0.2);
+      z-index: 10;
+      position: relative;
+      animation: titlePulse 4s ease-in-out infinite;
+    }
+
+    @keyframes titlePulse {
+      0%, 100% { text-shadow: 0 0 8px rgba(0, 208, 255, 0.8), 0 0 16px rgba(0, 208, 255, 0.4), 0 0 24px rgba(0, 208, 255, 0.2); }
+      50% { text-shadow: 0 0 12px rgba(0, 208, 255, 1), 0 0 24px rgba(0, 208, 255, 0.6), 0 0 36px rgba(0, 208, 255, 0.3); }
+    }
+
+    main {
+      max-width: 1000px; 
+      margin: 0 auto; 
+      padding: 0 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      text-align: center; 
+      margin: 3rem 0 4rem 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.8), rgba(30, 0, 50, 0.6));
+      border-radius: 15px;
+      border: 1px solid rgba(0, 208, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 208, 255, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero h2 {
+      font-size: 3rem; 
+      font-weight: 900;
+      margin-bottom: 1rem; 
+      color: #fff;
+      text-shadow: 
+        0 0 8px var(--neon-red),
+        0 0 16px var(--neon-red),
+        0 0 24px rgba(255, 0, 64, 0.6),
+        2px 2px 4px rgba(0, 0, 0, 1);
+      white-space: pre-line;
+      line-height: 1.2;
+      animation: heroGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes heroGlow {
+      0%, 100% { text-shadow: 0 0 8px var(--neon-red), 0 0 16px var(--neon-red), 0 0 24px rgba(255, 0, 64, 0.6), 2px 2px 4px rgba(0, 0, 0, 1); }
+      50% { text-shadow: 0 0 12px var(--neon-red), 0 0 24px var(--neon-red), 0 0 36px rgba(255, 0, 64, 0.8), 2px 2px 4px rgba(0, 0, 0, 1); }
+    }
+
+    .hero p {
+      font-size: 1.3rem; 
+      margin-bottom: 2rem;
+      color: var(--neon-blue); 
+      text-shadow: 0 0 8px var(--neon-blue);
+      white-space: pre-line;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-primary {
+      background: linear-gradient(45deg, var(--neon-red), var(--neon-blue), var(--neon-purple));
+      background-size: 200% 200%;
+      padding: 1.2rem 2.5rem; 
+      color: var(--text-light);
+      font-weight: 700; 
+      font-size: 1.1rem; 
+      border-radius: var(--btn-radius);
+      cursor: pointer; 
+      box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+      transition: all 0.3s ease;
+      border: none; 
+      text-decoration: none;
+      display: inline-block;
+      animation: gradientShift 3s ease infinite;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, var(--neon-red), var(--neon-blue), var(--neon-purple), var(--neon-orange));
+      background-size: 400% 400%;
+      border-radius: var(--btn-radius);
+      z-index: -1;
+      animation: borderGlow 2s linear infinite;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 0, 64, 0.7);
+    }
+
+    .packages {
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem; 
+      margin: 4rem 0;
+    }
+
+    .package-card {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(30, 0, 50, 0.7));
+      padding: 2rem; 
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.3);
+      color: var(--text-light);
+      display: flex; 
+      flex-direction: column;
+      text-align: center;
+      border: 1px solid rgba(255, 102, 0, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .package-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(255, 102, 0, 0.1), transparent);
+      animation: cardRotate 8s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes cardRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(255, 102, 0, 0.5);
+      border-color: rgba(255, 102, 0, 0.8);
+    }
+
+    .package-card:nth-child(2) {
+      border-color: rgba(255, 102, 0, 0.6);
+      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
+      transform: scale(1.05);
+    }
+
+    .package-card:nth-child(2):hover {
+      box-shadow: 0 15px 40px rgba(255, 102, 0, 0.6);
+    }
+
+    .package-card h3 {
+      margin-top: 0; 
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      color: var(--neon-orange);
+      text-shadow: 0 0 10px var(--neon-orange);
+    }
+
+    .package-card:nth-child(2) h3 {
+      color: var(--neon-orange);
+      text-shadow: 0 0 10px var(--neon-orange);
+    }
+
+    .package-price {
+      font-size: 2.5rem; 
+      font-weight: 900; 
+      color: var(--neon-orange);
+      text-shadow: 0 0 15px var(--neon-orange);
+      margin-bottom: 1rem;
+      animation: priceGlow 2s ease-in-out infinite;
+    }
+
+    .package-card:nth-child(2) .package-price {
+      color: var(--neon-orange);
+      text-shadow: 0 0 15px var(--neon-orange);
+    }
+
+    @keyframes priceGlow {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .package-card > p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .package-card ul {
+      list-style: none; 
+      padding-left: 0; 
+      margin: 0 0 2rem 0;
+      width: 100%;
+    }
+
+    .package-card ul li {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      text-align: left;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .package-card ul li::before {
+      content: '⚡';
+      position: absolute;
+      left: -0.5rem;
+      color: var(--neon-green);
+      text-shadow: 0 0 5px var(--neon-green);
+    }
+
+    .crypto-widget {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .crypto-widget h3 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--neon-blue);
+      text-shadow: 0 0 12px var(--neon-blue);
+    }
+
+    .widget-container {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.95), rgba(30, 0, 50, 0.8));
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 208, 255, 0.3);
+      border: 2px solid rgba(0, 208, 255, 0.4);
+      min-height: 450px;
+      position: relative;
+      backdrop-filter: blur(15px);
+    }
+
+    /* Enhanced mobile widget support */
+    gecko-coin-list-widget {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important;
+      min-height: 400px !important;
+    }
+
+    /* Mobile widget fallback */
+    .mobile-widget-fallback {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .mobile-widget-fallback {
+        display: block;
+      }
+      
+      gecko-coin-list-widget {
+        display: none !important;
+      }
+    }
+
+    .faq {
+      margin: 4rem 0;
+      color: var(--text-light);
+    }
+
+    .faq h3 {
+      font-size: 2rem; 
+      margin-bottom: 2rem; 
+      color: var(--neon-blue);
+      text-shadow: 0 0 12px var(--neon-blue);
+      text-align: center;
+    }
+
+    .faq-item {
+      margin-bottom: 1.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 208, 255, 0.3);
+    }
+
+    .faq-question {
+      font-weight: 700; 
+      cursor: pointer;
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(30, 0, 50, 0.7));
+      padding: 1rem 1.5rem; 
+      transition: all 0.3s ease;
+      user-select: none;
+      position: relative;
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: var(--neon-blue);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active::after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .faq-question:hover {
+      background: linear-gradient(135deg, var(--neon-blue), rgba(0, 150, 200, 0.8));
+      color: var(--dark-bg);
+      box-shadow: 0 4px 15px rgba(0, 208, 255, 0.4);
+    }
+
+    .faq-answer {
+      padding: 0;
+      color: var(--text-muted);
+      display: none;
+      font-size: 1rem;
+      line-height: 1.6;
+      background: rgba(17, 17, 17, 0.5);
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-answer.show {
+      display: block;
+      padding: 1.5rem;
+      max-height: 200px;
+    }
+
+    /* Enhanced responsive design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      header h1 {
+        font-size: 1.6rem;
+      }
+      
+      .tradingview-logo {
+        height: 32px;
+      }
+      
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+      
+      .packages {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .package-card:nth-child(2) {
+        transform: none;
+      }
+      
+      main {
+        padding: 0 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 1.5rem;
+        margin: 2rem 0 3rem 0;
+      }
+      
+      .hero h2 {
+        font-size: 1.8rem;
+      }
+      
+      .btn-primary {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+      
+      .package-card {
+        padding: 1.5rem;
+      }
+      
+      .package-price {
+        font-size: 2rem;
+      }
+    }
+
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus states for better accessibility */
+    .btn-primary:focus,
+    .faq-question:focus {
+      outline: 2px solid var(--neon-blue);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>CryptX Leak</h1>
+    </div>
+  </header>
+  
+  <main>
+    <section class="hero" aria-label="Hero Bereich">
+      <h2>15 Trading KIs in einem Indikator.<br>Welcome to the future.</h2>
+      <p>Next-Gen Trading: Gewinne neu definiert.<br>Automatisiere deine Strategie, minimiere Fehler, maximiere Rendite.</p>
+    </section>
+
+    <section class="packages" aria-label="Angebotspakete">
+      <div class="package-card">
+        <h3>Basic Paket</h3>
+        <div class="package-price">CHF 179.–</div>
+        <p>Ideal für Einsteiger</p>
+        <ul>
+          <li>Zugang zu CryptX Leak Indikator (Basisversion)</li>
+          <li>Multi-Asset Krypto Signale (Telegram)</li>
+        </ul>
+        <button class="btn-primary" onclick="document.querySelector('stripe-buy-button').click()">Jetzt kaufen</button>
+        <div style="display: none;">
+          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1RY94gQt7nyqcJPzq7suJFCQ"
+            publishable-key="pk_test_51RXrYeQt7nyqcJPzmYuv0wJONMT9vaUVteuAgOWz76ltE4d6GSRGwy9A0WGVY4pMjXUoT9iPXzRaI2U76hSdUTOt00RNSCOo0I">
+          </stripe-buy-button>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <h3>🔥 Pro Paket</h3>
+        <div class="package-price">CHF 249.–</div>
+        <p>Für aktive Trader</p>
+        <ul>
+          <li>Volle Indikator-Funktionalität (15 KIs)</li>
+          <li>Multi-Asset Krypto Signale (Telegram)</li>
+          <li>Lifetime Zugang</li>
+          <li>Priority Support</li>
+        </ul>
+        <button class="btn-primary" onclick="document.querySelectorAll('stripe-buy-button')[1].click()">Jetzt kaufen</button>
+        <div style="display: none;">
+          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1RY94gQt7nyqcJPzq7suJFCQ"
+            publishable-key="pk_test_51RXrYeQt7nyqcJPzmYuv0wJONMT9vaUVteuAgOWz76ltE4d6GSRGwy9A0WGVY4pMjXUoT9iPXzRaI2U76hSdUTOt00RNSCOo0I">
+          </stripe-buy-button>
+        </div>
+      </div>
+
+      <div class="package-card">
+        <h3>Premium Paket</h3>
+        <div class="package-price">CHF 649.–</div>
+        <p>Volle Power für Profis</p>
+        <ul>
+          <li>Alle Funktionen aus dem Pro-Paket</li>
+          <li>Persönlicher Onboarding-Call with exclusive Hints (30 Min)</li>
+          <li>Kostenloser Zugang zu kommenden Tools & Updates</li>
+          <li>Custom Indikator Anpassungen</li>
+        </ul>
+        <button class="btn-primary" onclick="document.querySelectorAll('stripe-buy-button')[2].click()">Jetzt kaufen</button>
+        <div style="display: none;">
+          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+          <stripe-buy-button
+            buy-button-id="buy_btn_1RY94gQt7nyqcJPzq7suJFCQ"
+            publishable-key="pk_test_51RXrYeQt7nyqcJPzmYuv0wJONMT9vaUVteuAgOWz76ltE4d6GSRGwy9A0WGVY4pMjXUoT9iPXzRaI2U76hSdUTOt00RNSCOo0I">
+          </stripe-buy-button>
+        </div>
+      </div>
+    </section>
+
+    <section class="crypto-widget" aria-label="Live Krypto Preise">
+      <h3>Live Marktdaten</h3>
+      <div class="widget-container">
+        <gecko-coin-list-widget 
+          locale="de" 
+          dark-mode="true" 
+          transparent-background="true" 
+          outlined="true" 
+          coin-ids="bitcoin,ethereum,binancecoin,ripple,cardano,solana,polkadot,dogecoin,litecoin" 
+          initial-currency="usd">
+        </gecko-coin-list-widget>
+        
+        <div class="mobile-widget-fallback">
+          <h4 style="color: var(--neon-blue); margin-bottom: 1rem;">📱 Mobile Widget</h4>
+          <p>Für die beste Erfahrung mit Live-Marktdaten empfehlen wir die Desktop-Version.</p>
+          <p style="margin-top: 1rem;">
+            <a href="https://www.coingecko.com" target="_blank" style="color: var(--neon-orange); text-decoration: none;">
+              → Aktuelle Kurse auf CoinGecko anzeigen
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" aria-label="Häufig gestellte Fragen">
+      <h3>Häufig gestellte Fragen</h3>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Wie funktioniert die Freischaltung des Indikators?</div>
+        <div class="faq-answer">Nach dem Kauf gibst du deinen TradingView-Nutzernamen an – wir schalten dich innerhalb von 24h frei.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Benötige ich spezielle Software?</div>
+        <div class="faq-answer">Nein. Alles läuft über TradingView, Telegram und Browser – keine Installation nötig.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Wie sicher sind meine Zahlungen?</div>
+        <div class="faq-answer">Alle Transaktionen laufen verschlüsselt über Stripe oder PayPal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Ich bin totaler Anfänger – ist das was für mich?</div>
+        <div class="faq-answer">Ja. Unser System ist auch für komplette Neueinsteiger gebaut. Der Einstieg ist idiotensicher erklärt.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Wie viel Zeit muss ich investieren?</div>
+        <div class="faq-answer">Weniger als 10 Minuten täglich, wenn du unsere Signale nutzt. Kein Chart-Watching nötig.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Brauche ich Vorwissen im Trading?</div>
+        <div class="faq-answer">Nein. Der Videokurs erklärt alle Grundlagen, Begriffe und Strategien praxisnah.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Wie viel Gewinn kann ich erwarten?</div>
+        <div class="faq-answer">Wir versprechen keine Renditen. Aber du bekommst ein System, das dir klare Einstiege und Ausstiege zeigt – und so Fehler und Emotionen eliminiert.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Wird das System weiterentwickelt?</div>
+        <div class="faq-answer">Ja. Als Kunde bekommst du Updates und Verbesserungen automatisch mitgeliefert.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Was, wenn ich nicht zurechtkomme?</div>
+        <div class="faq-answer">Unser Support steht dir per Mail & Telegram zur Verfügung. Außerdem bekommst du Tutorials und Setup-Guides.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Gibt es eine Geld-zurück-Garantie?</div>
+        <div class="faq-answer">Digitale Produkte sind generell vom Umtausch ausgeschlossen – aber wir finden für jedes Problem eine Lösung.</div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="https://widgets.coingecko.com/gecko-coin-list-widget.js"></script>
+  <script>
+    // FAQ Toggle Funktion
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => {
+          const answer = q.nextElementSibling;
+          const isOpen = answer.classList.contains('show');
+          
+          // Close all answers first
+          document.querySelectorAll('.faq-answer').forEach(a => {
+            a.classList.remove('show');
+            a.style.display = 'none';
+          });
+          document.querySelectorAll('.faq-question').forEach(question => {
+            question.classList.remove('active');
+          });
+          
+          // If this answer wasn't open, open it
+          if (!isOpen) {
+            answer.classList.add('show');
+            answer.style.display = 'block';
+            q.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
       --neon-blue: #00d0ff;
       --neon-orange: #ff6600;
       --neon-purple: #aa00ff;
