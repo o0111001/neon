@@ -554,14 +554,6 @@
       max-height: 200px;
     }
 
-    /* Chat Room Styles */
-    .chat-widget {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1001;
-    }
-
     .chat-button {
       width: 60px;
       height: 60px;
@@ -778,43 +770,6 @@
       outline: 2px solid var(--neon-blue);
       outline-offset: 2px;
     }
-
-  </style>
-</head>
-<body>
-  <!-- Chat Room Widget -->
-  <div class="chat-widget">
-    <button class="chat-button" onclick="toggleChat()">💬</button>
-    <div class="chat-container" id="chatContainer">
-      <div class="chat-header">
-        CryptX Leak Community Chat
-      </div>
-      <div class="chat-messages" id="chatMessages">
-        <div class="chat-message user1">
-          <div class="username">TradingKing92</div>
-          Gerade 200€ mit CryptX Leak gemacht! 🚀
-        </div>
-        <div class="chat-message user2">
-          <div class="username">CryptoQueen</div>
-          Welche Signale nutzt ihr heute?
-        </div>
-        <div class="chat-message user3">
-          <div class="username">HODLer2024</div>
-          Bitcoin steigt wieder! Perfect timing 📈
-        </div>
-      </div>
-      <div class="chat-input-container">
-        <input type="text" class="username-input" id="usernameInput" placeholder="Dein Username..." value="">
-        <input type="text" class="chat-input" id="chatInput" placeholder="Schreib eine Nachricht..." onkeypress="handleEnter(event)">
-      </div>
-    </div>
-  </div>
-
-  <header>
-    <div class="header-content">
-      <h1>CryptX Leak</h1>
-    </div>
-  </header>
   
   <main>
     <section class="hero" aria-label="Hero Bereich">
@@ -907,7 +862,7 @@
     </section>
 
     <section class="ai-chat" aria-label="AI Support Chat">
-      <h3>:-) Chatte mit unsererem Trading Lehrer KI (beta)</h3>
+      <h3>:-) Chatte mit dem Trading Lehrer Bot (beta)</h3>
       <div class="chat-bot-container">
         <iframe 
           src="https://cdn.botpress.cloud/webchat/v3.0/shareable.html?configUrl=https://files.bpcontent.cloud/2025/06/09/18/20250609185818-DL13RK29.json"
