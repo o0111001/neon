@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CryptX Leak Community Tool – Trading Indikator</title>
+  <title>CryptX Leak Community Tool – Trading Indicator</title>
   <style>
     :root {
       --neon-red: #ff0040;
@@ -317,6 +317,8 @@
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(10px);
+      justify-content: space-between;
+      min-height: 400px;
     }
 
     .package-card::before {
@@ -395,6 +397,7 @@
       padding-left: 0; 
       margin: 0 0 2rem 0;
       width: 100%;
+      flex-grow: 1;
     }
 
     .package-card ul li {
@@ -486,6 +489,8 @@
       width: 100%;
       min-height: 500px;
     }
+
+    .faq {
       margin: 4rem 0;
       color: var(--text-light);
     }
@@ -580,21 +585,21 @@
   </header>
   
   <main>
-    <section class="hero" aria-label="Hero Bereich">
-      <h2>Über 30 Power KI's in einem Indikator;<br>Willkommen im Future Trading.</h2>
-      <p>Next-Gen Trading: Gewinne neu definiert.<br>Automatisiere deine Strategie, minimiere Fehler, maximiere Rendite.</p>
+    <section class="hero" aria-label="Hero Section">
+      <h2>+30x Power AI's packed in 1 Indicator.<br>Welcome to Next-Gen Trading.</h2>
+      <p>Automate your strategy, minimize errors, maximize returns.</p>
     </section>
 
-    <section class="packages" aria-label="Angebotspakete">
+    <section class="packages" aria-label="Package Offers">
       <div class="package-card">
-        <h3>Basic Paket</h3>
+        <h3>Basic Package</h3>
         <div class="package-price">CHF 179.–</div>
-        <p>Ideal für Einsteiger</p>
+        <p>Ideal for Beginners</p>
         <ul>
-          <li>Zugang zu CryptX Leak Indikator (Basisversion)</li>
-          <li>Multi-Asset Krypto Signale (Telegram)</li>
+          <li>Basic Indicator (+20 AI's)</li>
+          <li>Lifetime Access</li>
         </ul>
-        <button class="btn-primary" onclick="document.querySelector('stripe-buy-button').click()">Jetzt kaufen</button>
+        <button class="btn-primary" onclick="document.querySelector('stripe-buy-button').click()">Get Access</button>
         <div style="display: none;">
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
@@ -605,16 +610,14 @@
       </div>
 
       <div class="package-card">
-        <h3>🔥 Pro Paket</h3>
+        <h3>🔥 Pro Package</h3>
         <div class="package-price">CHF 249.–</div>
-        <p>Für aktive Trader</p>
+        <p>For Active Traders</p>
         <ul>
-          <li>Volle Indikator-Funktionalität (15 KIs)</li>
-          <li>Multi-Asset Krypto Signale (Telegram)</li>
-          <li>Lifetime Zugang</li>
-          <li>Priority Support</li>
+          <li>Pro Indicator (+30 AI's)</li>
+          <li>Lifetime Access</li>
         </ul>
-        <button class="btn-primary" onclick="document.querySelectorAll('stripe-buy-button')[1].click()">Jetzt kaufen</button>
+        <button class="btn-primary" onclick="document.querySelectorAll('stripe-buy-button')[1].click()">Get Access</button>
         <div style="display: none;">
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
@@ -625,16 +628,14 @@
       </div>
 
       <div class="package-card">
-        <h3>Premium Paket</h3>
+        <h3>Premium Package</h3>
         <div class="package-price">CHF 649.–</div>
-        <p>Volle Power für Profis</p>
+        <p>Full Power for Professionals</p>
         <ul>
-          <li>Alle Funktionen aus dem Pro-Paket</li>
-          <li>Persönlicher Onboarding-Call with exclusive Hints (30 Min)</li>
-          <li>Kostenloser Zugang zu kommenden Tools & Updates</li>
-          <li>Custom Indikator Anpassungen</li>
+          <li>Premium Indicator (+40 AI's)</li>
+          <li>Lifetime Access</li>
         </ul>
-        <button class="btn-primary" onclick="document.querySelectorAll('stripe-buy-button')[2].click()">Jetzt kaufen</button>
+        <button class="btn-primary" onclick="document.querySelectorAll('stripe-buy-button')[2].click()">Get Access</button>
         <div style="display: none;">
           <script async src="https://js.stripe.com/v3/buy-button.js"></script>
           <stripe-buy-button
@@ -645,11 +646,11 @@
       </div>
     </section>
 
-    <section class="crypto-widget" aria-label="Live Krypto Preise">
-      <h3>Live Marktdaten</h3>
+    <section class="crypto-widget" aria-label="Live Crypto Prices">
+      <h3>Live Market Data</h3>
       <div class="widget-container">
         <gecko-coin-list-widget 
-          locale="de" 
+          locale="en" 
           dark-mode="true" 
           transparent-background="true" 
           outlined="true" 
@@ -659,10 +660,10 @@
         
         <div class="mobile-widget-fallback">
           <h4 style="color: var(--neon-blue); margin-bottom: 1rem;">📱 Mobile Widget</h4>
-          <p>Für die beste Erfahrung mit Live-Marktdaten empfehlen wir die Desktop-Version.</p>
+          <p>For the best experience with live market data, we recommend the desktop version.</p>
           <p style="margin-top: 1rem;">
             <a href="https://www.coingecko.com" target="_blank" style="color: var(--neon-orange); text-decoration: none;">
-              → Aktuelle Kurse auf CoinGecko anzeigen
+              → View current prices on CoinGecko
             </a>
           </p>
         </div>
@@ -670,7 +671,7 @@
     </section>
 
     <section class="ai-chat" aria-label="AI Support Chat">
-      <h3>Trading Lehrer Bot:</h3>
+      <h3>Trading Teacher Bot:</h3>
       <div class="chat-bot-container">
         <iframe 
           src="https://cdn.botpress.cloud/webchat/v3.0/shareable.html?configUrl=https://files.bpcontent.cloud/2025/06/09/18/20250609185818-DL13RK29.json"
@@ -682,99 +683,20 @@
       </div>
     </section>
 
-    <section class="faq" aria-label="Häufig gestellte Fragen">
-      <h3>Häufig gestellte Fragen</h3>
+    <section class="faq" aria-label="Frequently Asked Questions">
+      <h3>Frequently Asked Questions</h3>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">Wie funktioniert die Freischaltung des Indikators?</div>
-        <div class="faq-answer">Beim Kaufvorgang gibst du deinen TradingView-Nutzernamen an. Wir schalten dich innerhalb von 24h frei.</div>
+        <div class="faq-question" tabindex="0">How does the indicator activation work?</div>
+        <div class="faq-answer">During the purchase process, you provide your TradingView username. We will activate you within 24 hours.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">Benötige ich spezielle Software?</div>
-        <div class="faq-answer">Nein. Alles läuft über TradingView, Telegram und Browser – keine Installation nötig.</div>
+        <div class="faq-question" tabindex="0">Do I need special software?</div>
+        <div class="faq-answer">No. Everything runs through TradingView, Telegram and your browser – no installation needed.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">Wie sicher sind meine Zahlungen?</div>
-        <div class="faq-answer">Alle Transaktionen laufen verschlüsselt über Stripe oder PayPal.</div>
+        <div class="faq-question" tabindex="0">How secure are my payments?</div>
+        <div class="faq-answer">All transactions run encrypted through Stripe or PayPal.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">Ich bin totaler Anfänger – ist das was für mich?</div>
-        <div class="faq-answer">Ja. Unser System ist auch für komplette Neueinsteiger gebaut. Der Einstieg ist idiotensicher erklärt.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" tabindex="0">Wie viel Zeit muss ich investieren?</div>
-        <div class="faq-answer">Weniger als 10 Minuten täglich, wenn du unsere Signale nutzt. Kein Chart-Watching nötig.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" tabindex="0">Brauche ich Vorwissen im Trading?</div>
-        <div class="faq-answer">Nein. Der Videokurs in den Stories (IG) erklärt alle Grundlagen, Begriffe und Strategien praxisnah.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" tabindex="0">Wie viel Gewinn kann ich erwarten?</div>
-        <div class="faq-answer">Wir versprechen keine Renditen. Aber du bekommst ein System, das dir klare Einstiege und Ausstiege zeigt – und so Fehler und Emotionen eliminiert.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" tabindex="0">Wird das System weiterentwickelt?</div>
-        <div class="faq-answer">Ja. Als Kunde bekommst du Updates und Verbesserungen automatisch mitgeliefert.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" tabindex="0">Was, wenn ich nicht zurechtkomme?</div>
-        <div class="faq-answer">Unser Support steht dir per Mail & Telegram zur Verfügung.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question" tabindex="0">Gibt es eine Geld-zurück-Garantie?</div>
-        <div class="faq-answer">Digitale Produkte sind generell vom Umtausch ausgeschlossen. Aber wir finden für jedes Problem eine Lösung.</div>
-      </div>
-    </section>
-
-  </main>
-
-  <script src="https://widgets.coingecko.com/gecko-coin-list-widget.js"></script>
-  <script>
-    // FAQ Toggle Funktion
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.faq-question').forEach(q => {
-        q.addEventListener('click', () => {
-          const answer = q.nextElementSibling;
-          const isOpen = answer.classList.contains('show');
-          
-          // Close all answers first
-          document.querySelectorAll('.faq-answer').forEach(a => {
-            a.classList.remove('show');
-            a.style.display = 'none';
-          });
-          document.querySelectorAll('.faq-question').forEach(question => {
-            question.classList.remove('active');
-          });
-          
-          // If this answer wasn't open, open it
-          if (!isOpen) {
-            answer.classList.add('show');
-            answer.style.display = 'block';
-            q.classList.add('active');
-          }
-        });
-      });
-
-      // Interactive background on scroll to FAQ section
-      const faqSection = document.querySelector('.faq');
-      const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -20% 0px',
-        threshold: 0.3
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            document.body.classList.add('faq-active');
-          } else {
-            document.body.classList.remove('faq-active');
-          }
-        });
-      }, observerOptions);
-
-      observer.observe(faqSection);
-    });
-  </script>
-</body>
-</html>
+        <div class="faq-question" tabindex="0">I'm a complete beginner – is this for me?</div>
+        <div class="faq-answer">Yes. Our system is built for complete newcomers too. The setup is explained in an idiot-proof way.</div>
