@@ -575,6 +575,344 @@
       outline-offset: 2px;
     }
 
+    .features {
+      margin: 4rem 0;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(30, 0, 50, 0.7));
+      border-radius: 20px;
+      border: 1px solid rgba(0, 208, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 208, 255, 0.2);
+      backdrop-filter: blur(15px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(0, 208, 255, 0.05), transparent);
+      animation: featureRotate 15s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes featureRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .features-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .features-visual {
+      position: relative;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .device {
+      position: absolute;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+      box-shadow: 0 8px 25px rgba(0, 208, 255, 0.3);
+      border: 2px solid rgba(0, 208, 255, 0.4);
+    }
+
+    .laptop {
+      width: 280px;
+      height: 180px;
+      left: -20px;
+      top: 50px;
+      z-index: 2;
+    }
+
+    .laptop::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 8px;
+      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+      border-radius: 0 0 8px 8px;
+    }
+
+    .mobile {
+      width: 120px;
+      height: 200px;
+      right: -10px;
+      top: 80px;
+      z-index: 3;
+      border-radius: 25px;
+    }
+
+    .screen {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+      border-radius: inherit;
+      padding: 15px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mobile .screen {
+      padding: 20px 10px;
+    }
+
+    .chart-line {
+      position: absolute;
+      top: 30%;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-blue), var(--neon-green), var(--neon-red));
+      border-radius: 2px;
+      animation: chartPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes chartPulse {
+      0%, 100% { opacity: 0.8; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.5); }
+    }
+
+    .chart-bars {
+      position: absolute;
+      bottom: 30%;
+      left: 15%;
+      right: 15%;
+      height: 40px;
+      display: flex;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    .bar {
+      flex: 1;
+      background: linear-gradient(180deg, var(--neon-orange), var(--neon-red));
+      border-radius: 2px 2px 0 0;
+      animation: barGrow 3s ease-in-out infinite;
+    }
+
+    .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
+    .bar:nth-child(2) { height: 100%; animation-delay: 0.5s; }
+    .bar:nth-child(3) { height: 40%; animation-delay: 1s; }
+    .bar:nth-child(4) { height: 80%; animation-delay: 1.5s; }
+    .bar:nth-child(5) { height: 70%; animation-delay: 2s; }
+
+    @keyframes barGrow {
+      0%, 100% { transform: scaleY(0.8); }
+      50% { transform: scaleY(1.2); }
+    }
+
+    .signal {
+      position: absolute;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: bold;
+      color: white;
+      text-shadow: 0 0 5px currentColor;
+      animation: signalBlink 2s ease-in-out infinite;
+    }
+
+    .signal.buy {
+      background: linear-gradient(45deg, var(--neon-green), #00ff44);
+      top: 20%;
+      right: 15%;
+    }
+
+    .signal.sell {
+      background: linear-gradient(45deg, var(--neon-red), #ff4400);
+      bottom: 15%;
+      right: 5px;
+      font-size: 8px;
+      padding: 2px 4px;
+    }
+
+    @keyframes signalBlink {
+      0%, 100% { opacity: 0.7; box-shadow: 0 0 5px currentColor; }
+      50% { opacity: 1; box-shadow: 0 0 15px currentColor; }
+    }
+
+    .notification {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+      padding: 4px 6px;
+      border-radius: 8px;
+      font-size: 8px;
+      font-weight: bold;
+      color: white;
+      animation: notificationPulse 1.5s ease-in-out infinite;
+    }
+
+    @keyframes notificationPulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.1); }
+    }
+
+    .mini-chart {
+      position: relative;
+      height: 60px;
+      margin-top: 40px;
+    }
+
+    .mini-line {
+      position: absolute;
+      top: 20px;
+      left: 5px;
+      right: 5px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--neon-green), var(--neon-red));
+      animation: miniChartFlow 2s ease-in-out infinite;
+    }
+
+    @keyframes miniChartFlow {
+      0% { transform: scaleX(0.8); opacity: 0.6; }
+      50% { transform: scaleX(1.1); opacity: 1; }
+      100% { transform: scaleX(0.8); opacity: 0.6; }
+    }
+
+    .features-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .feature-item h4 {
+      color: var(--neon-blue);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 8px var(--neon-blue);
+      font-weight: 700;
+    }
+
+    .feature-item p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .feature-ctas {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-feature {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(30, 0, 50, 0.7));
+      border: 1px solid rgba(255, 102, 0, 0.4);
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      min-width: 90px;
+    }
+
+    .btn-feature::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(255, 102, 0, 0.1), transparent);
+      animation: btnRotate 6s linear infinite;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-feature:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes btnRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .btn-feature.featured {
+      border-color: rgba(255, 102, 0, 0.8);
+      box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
+      transform: scale(1.05);
+    }
+
+    .btn-feature:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+      border-color: rgba(255, 102, 0, 0.8);
+    }
+
+    .btn-feature.featured:hover {
+      transform: translateY(-2px) scale(1.1);
+      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.6);
+    }
+
+    .cta-label {
+      font-size: 0.85rem;
+      color: var(--neon-orange);
+      text-shadow: 0 0 5px var(--neon-orange);
+    }
+
+    .cta-price {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 768px) {
+      .features-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+      }
+      
+      .features-visual {
+        height: 300px;
+      }
+      
+      .laptop {
+        width: 200px;
+        height: 130px;
+        left: 10px;
+        top: 30px;
+      }
+      
+      .mobile {
+        width: 90px;
+        height: 150px;
+        right: 10px;
+        top: 60px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -646,6 +984,65 @@
       </div>
     </section>
 
+    <section class="features" aria-label="Product Features">
+      <div class="features-container">
+        <div class="features-visual">
+          <div class="device laptop">
+            <div class="screen">
+              <div class="chart-line"></div>
+              <div class="chart-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+              </div>
+              <div class="signal buy">BUY</div>
+            </div>
+          </div>
+          <div class="device mobile">
+            <div class="screen">
+              <div class="notification">📱 Alert!</div>
+              <div class="mini-chart">
+                <div class="mini-line"></div>
+                <div class="signal sell">SELL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="features-content">
+          <div class="feature-item">
+            <h4>Maximize ProfitPro in every asset and timeframe</h4>
+            <p>Conquer the world of cryptocurrency in any timeframe on TradingView.</p>
+          </div>
+          <div class="feature-item">
+            <h4>Explore additional features to elevate your trading</h4>
+            <p>Unlock the power of our volatility bands, support/resistance levels and more!</p>
+          </div>
+          <div class="feature-item">
+            <h4>Stay one step ahead with real-time alerts</h4>
+            <p>Customize your own alerts and get instant notifications directly to your phone or computer.</p>
+          </div>
+          
+          <div class="feature-ctas">
+            <button class="btn-feature" onclick="document.querySelector('stripe-buy-button').click()">
+              <span class="cta-label">Basic</span>
+              <span class="cta-price">CHF 179</span>
+            </button>
+            <button class="btn-feature featured" onclick="document.querySelectorAll('stripe-buy-button')[1].click()">
+              <span class="cta-label">🔥 Pro</span>
+              <span class="cta-price">CHF 249</span>
+            </button>
+            <button class="btn-feature" onclick="document.querySelectorAll('stripe-buy-button')[2].click()">
+              <span class="cta-label">Premium</span>
+              <span class="cta-price">CHF 649</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="crypto-widget" aria-label="Live Crypto Prices">
       <h3>Live Market Data</h3>
       <div class="widget-container">
@@ -686,10 +1083,6 @@
     <section class="faq" aria-label="Frequently Asked Questions">
       <h3>Frequently Asked Questions</h3>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">What is TradingView?</div>
-        <div class="faq-answer"><strong>TradingView</strong> stands as the foremost free online charting platform, delivering real-time market data across stocks, cryptocurrencies, forex, and commodities. Esteemed by traders and investors worldwide, its extensive array of features encompasses cutting-edge analysis tools, comprehensive financial data, dynamic charts, and an assortment of indicators.<br><br><strong>Please note that you will be required to make a free TradingView account should you purchase our TradingView indicators, as they only operate on the TradingView platform. Please make an account prior to purchasing any plans as we collect your TradingView username at checkout.</strong><br><br>To create your TradingView account, visit: www.tradingview.com and locate the sign-in button situated at the top right corner of the site.<br>Proceed by pressing "Sign up" on the subsequent page to initiate the account creation process.<br>Once you have registered, you are ready to set up our indicators while indulging in the wealth of complimentary features provided by the TradingView platform.</div>
-      </div>
-      <div class="faq-item">
         <div class="faq-question" tabindex="0">How does the indicator activation work?</div>
         <div class="faq-answer">During the purchase process, you provide your TradingView username. We will activate you within 24 hours.</div>
       </div>
@@ -705,9 +1098,19 @@
         <div class="faq-question" tabindex="0">I'm a complete beginner – is this for me?</div>
         <div class="faq-answer">Yes. Our system is built for complete newcomers too. The setup is explained in an idiot-proof way.</div>
       </div>
+    <section class="faq" aria-label="Frequently Asked Questions">
+      <h3>Frequently Asked Questions</h3>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">How do I add CryptXLeak indicators on TradingView?</div>
+        <div class="faq-question" tabindex="0">What is TradingView?</div>
+        <div class="faq-answer"><strong>TradingView</strong> stands as the foremost free online charting platform, delivering real-time market data across stocks, cryptocurrencies, forex, and commodities. Esteemed by traders and investors worldwide, its extensive array of features encompasses cutting-edge analysis tools, comprehensive financial data, dynamic charts, and an assortment of indicators.<br><br><strong>Please note that you will be required to make a free TradingView account should you purchase our TradingView indicators, as they only operate on the TradingView platform. Please make an account prior to purchasing any plans as we collect your TradingView username at checkout.</strong><br><br>To create your TradingView account, visit: www.tradingview.com and locate the sign-in button situated at the top right corner of the site.<br>Proceed by pressing "Sign up" on the subsequent page to initiate the account creation process.<br>Once you have registered, you are ready to set up our indicators while indulging in the wealth of complimentary features provided by the TradingView platform.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">How do I add ProfitPro indicators on TradingView?</div>
         <div class="faq-answer">Upon plan purchase, you will be asked for your tradingview name and within 24h you will be granted exclusive access to the our indicators. This can be accessed through the indicator tab on TradingView.<br><br>To begin, navigate your way to the TradingView charts.<br>Next, press on the indicator tab.<br>Finally, press the "Invite Only Scripts" tab and select your indicator.<br><br>The indicator is now applied. For further customization, simply locate the settings ⚙️ icon adjacent to its name. <strong>Please note that if the invite-only script tab is not shown for you, you have not yet been granted access to the purchased indicator, we ask that you wait patiently until we have done so.</strong></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">How do I add indicators on ATAS?</div>
+        <div class="faq-answer">You will receive access to ProfitPro indicators within 24 hours of your purchase. Please check your "Invite Only Scripts" tab in TradingView.<br><br>You will receive access to premium ATAS indicators within 24 hours. Ensure you have submitted the correct ATAS registration email at checkout.<br><br>If you have not received access within 24 hours, please contact us at hey@cryptxleak.com.</div>
       </div>
       <div class="faq-item">
         <div class="faq-question" tabindex="0">When will I get access to CryptXLeak indicators?</div>
@@ -718,7 +1121,7 @@
         <div class="faq-answer">Setting up alerts on TradingView is a simple process. Firstly, make sure the indicator is applied to your chart. Then, press the 3 dots next to the indicator name and select "Add alert on CryptXLeak AI" as shown below.<br><br>Once selected, the alert window will promptly appear, presenting a range of alert options. We offer 'Buy Signal' and 'Sell Signal' alerts to cater to your specific requirements. Choose the alerts that align with your preferences, opt for the trigger condition of "Once per bar close," and designate an expiration date. It's important to note that open-ended alerts are exclusively available to premium TradingView accounts.<br><br>Additionally, you have the flexibility to personalize your notification settings to ensure you receive timely alerts when signals are triggered. Simply navigate to the "Notifications" tab and select your preferred configurations.<br><br>Finally, once all the settings are finalized, click "Create" to activate your alerts, allowing them to be in full operation and ready to serve you effectively!</div>
       </div>
       <div class="faq-item">
-        <div class="faq-question" tabindex="0">Does CryptXLeak enter trades for me?</div>
+        <div class="faq-question" tabindex="0">Does ProfitPro enter trades for me?</div>
         <div class="faq-answer">Our TradingView indicators do <strong>not</strong> buy or sell for you. Our TradingView tools only provide the analytical signals, and users are responsible for their own individual market entries.<br><br>Our ATAS trading algorithm "FlowPro Bot" <strong>does</strong> enter trades automatically as it is a fully automated trading bot. This tool is only available on the ATAS platform and does not exist on TradingView.</div>
       </div>
       <div class="faq-item">
@@ -735,7 +1138,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-question" tabindex="0">What are the cancellation and refund policies?</div>
-        <div class="faq-answer">We maintain a strict no-refund policy and all purchases are considered final. Refunds will only be issued in the event of duplicate orders.<br><br>Customers are free to cancel their subscriptions at any time without incurring any charges.<br><br>By engaging with CryptXLeak, you acknowledge and agree to abide by the terms outlined in this policy.</div>
+        <div class="faq-answer">We maintain a strict no-refund policy and all purchases are considered final. Refunds will only be issued in the event of duplicate orders.<br><br>Customers are free to cancel their subscriptions at any time without incurring any charges.<br><br>By engaging with ProfitPro, you acknowledge and agree to abide by the terms outlined in this policy.</div>
       </div>
     </section>
 
