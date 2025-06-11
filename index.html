@@ -672,6 +672,48 @@
       padding: 20px 10px;
     }
 
+    .device-header {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .mobile .device-header {
+      top: 12px;
+      left: 8px;
+      right: 8px;
+    }
+
+    .logo {
+      font-size: 8px;
+      font-weight: bold;
+      padding: 2px 4px;
+      border-radius: 3px;
+      text-shadow: 0 0 3px currentColor;
+    }
+
+    .mobile .logo {
+      font-size: 6px;
+      padding: 1px 3px;
+    }
+
+    .tradingview-logo {
+      background: linear-gradient(45deg, #2962ff, #1e53e5);
+      color: white;
+      border: 1px solid rgba(41, 98, 255, 0.5);
+    }
+
+    .cryptxleak-logo {
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+      color: white;
+      border: 1px solid rgba(0, 208, 255, 0.5);
+    }
+
     .chart-line {
       position: absolute;
       top: 30%;
@@ -989,6 +1031,10 @@
         <div class="features-visual">
           <div class="device laptop">
             <div class="screen">
+              <div class="device-header">
+                <div class="logo tradingview-logo">TradingView</div>
+                <div class="logo cryptxleak-logo">CryptXLeak</div>
+              </div>
               <div class="chart-line"></div>
               <div class="chart-bars">
                 <div class="bar"></div>
@@ -1002,6 +1048,10 @@
           </div>
           <div class="device mobile">
             <div class="screen">
+              <div class="device-header">
+                <div class="logo tradingview-logo">TV</div>
+                <div class="logo cryptxleak-logo">CXL</div>
+              </div>
               <div class="notification">📱 Alert!</div>
               <div class="mini-chart">
                 <div class="mini-line"></div>
