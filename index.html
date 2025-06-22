@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CryptXLeak Community Tool - Trading Indicator</title>
+  <title>cryptXleak Community Tool - Trading Indicator</title>
   <style>
     :root {
       --neon-red: #ff0040;
@@ -11,6 +11,8 @@
       --neon-orange: #ff6600;
       --neon-purple: #aa00ff;
       --neon-green: #00ff88;
+      --neon-pink: #ff0080;
+      --neon-cyan: #00ffff;
       --dark-bg: #0a0a0a;
       --dark-card: #111;
       --text-light: #eee;
@@ -24,7 +26,7 @@
 
     body {
       margin: 0; 
-      background: var(--dark-bg); 
+      background: #020510; 
       color: var(--text-light);
       font-family: var(--font-sans); 
       line-height: 1.6;
@@ -33,7 +35,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Simple, Clean Futuristic Background */
+    /* Interactive Neon Dark Blue Background */
     body::before {
       content: '';
       position: fixed;
@@ -41,28 +43,28 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: 
-        /* Clean grid lines */
-        linear-gradient(90deg, rgba(0, 208, 255, 0.15) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(0, 208, 255, 0.12) 1px, transparent 1px),
-        /* Subtle depth effect */
-        linear-gradient(90deg, transparent 49px, rgba(255, 0, 64, 0.08) 50px, transparent 51px),
-        linear-gradient(180deg, transparent 49px, rgba(255, 0, 64, 0.06) 50px, transparent 51px);
-      background-size: 25px 25px, 25px 25px, 100px 100px, 100px 100px;
-      animation: harmonicFlow 30s linear infinite;
+      background: radial-gradient(circle at center, rgba(0, 30, 80, 0.15), rgba(0, 15, 40, 0.08));
+      animation: neonPulse 8s ease-in-out infinite;
       z-index: -2;
       pointer-events: none;
-      transition: all 2s ease;
+      transition: all 0.5s ease;
     }
 
-    body.faq-active::before {
-      background: 
-        /* Orange harmonic grid */
-        linear-gradient(90deg, rgba(255, 102, 0, 0.18) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255, 102, 0, 0.15) 1px, transparent 1px),
-        /* Purple accent lines */
-        linear-gradient(90deg, transparent 49px, rgba(170, 0, 255, 0.1) 50px, transparent 51px),
-        linear-gradient(180deg, transparent 49px, rgba(170, 0, 255, 0.08) 50px, transparent 51px);
+    @keyframes neonPulse {
+      0%, 100% { 
+        background: radial-gradient(circle at center, rgba(0, 30, 80, 0.15), rgba(0, 15, 40, 0.08));
+        opacity: 0.8;
+      }
+      50% { 
+        background: radial-gradient(circle at center, rgba(0, 50, 120, 0.25), rgba(0, 30, 80, 0.15));
+        opacity: 1;
+      }
+    }
+
+    body:hover::before {
+      background: radial-gradient(circle at center, rgba(0, 80, 160, 0.35), rgba(0, 50, 120, 0.25)) !important;
+      animation-duration: 3s;
+      opacity: 1;
     }
 
     body::after {
@@ -77,21 +79,6 @@
       pointer-events: none;
     }
 
-    @keyframes harmonicFlow {
-      0% { 
-        background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px;
-        opacity: 1;
-      }
-      50% { 
-        background-position: -12px -12px, -12px -12px, -50px -50px, -50px -50px;
-        opacity: 0.8;
-      }
-      100% { 
-        background-position: -25px -25px, -25px -25px, -100px -100px, -100px -100px;
-        opacity: 1;
-      }
-    }
-
     header {
       position: sticky; 
       top: 0; 
@@ -103,27 +90,6 @@
       z-index: 1000;
       position: relative;
       box-shadow: 0 4px 20px rgba(0, 208, 255, 0.2);
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: 
-        linear-gradient(90deg, rgba(0, 208, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(0, 208, 255, 0.08) 1px, transparent 1px);
-      background-size: 15px 15px;
-      animation: headerMatrix 20s linear infinite;
-      z-index: -1;
-      pointer-events: none;
-    }
-
-    @keyframes headerMatrix {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-15px, -15px); }
     }
 
     .header-content {
@@ -175,125 +141,90 @@
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -10%;
-      right: -5%;
-      width: 400px;
-      height: 300px;
-      background-image: url('neon_trader_mask.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      opacity: 0.3;
-      z-index: 1;
-      pointer-events: none;
-      mix-blend-mode: screen;
-      filter: blur(1px) brightness(1.2);
-      animation: maskFloat 6s ease-in-out infinite;
-    }
-
-    @keyframes maskFloat {
-      0%, 100% { 
-        transform: translateY(0px) translateX(0px) rotate(0deg);
-        opacity: 0.3;
-      }
-      50% { 
-        transform: translateY(-15px) translateX(5px) rotate(2deg);
-        opacity: 0.5;
-      }
-    }
-
     .hero h2 {
-      font-size: 2.5rem; 
-      font-weight: 900;
+      font-size: 1.6rem; 
+      font-weight: 700;
       margin-bottom: 1rem; 
       color: #fff;
       text-shadow: 
-        0 0 8px var(--neon-red),
-        0 0 16px var(--neon-red),
-        0 0 24px rgba(255, 0, 64, 0.6),
-        2px 2px 4px rgba(0, 0, 0, 1);
+        0 0 6px var(--neon-red),
+        0 0 12px var(--neon-red),
+        0 0 18px rgba(255, 0, 64, 0.5),
+        1px 1px 3px rgba(0, 0, 0, 0.8);
       white-space: pre-line;
-      line-height: 1.2;
+      line-height: 1.3;
       animation: heroGlow 3s ease-in-out infinite;
       position: relative;
       z-index: 2;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: var(--font-sans);
+      letter-spacing: 0.02em;
     }
 
     @keyframes heroGlow {
-      0%, 100% { text-shadow: 0 0 8px var(--neon-red), 0 0 16px var(--neon-red), 0 0 24px rgba(255, 0, 64, 0.6), 2px 2px 4px rgba(0, 0, 0, 1); }
-      50% { text-shadow: 0 0 12px var(--neon-red), 0 0 24px var(--neon-red), 0 0 36px rgba(255, 0, 64, 0.8), 2px 2px 4px rgba(0, 0, 0, 1); }
+      0%, 100% { text-shadow: 0 0 6px var(--neon-red), 0 0 12px var(--neon-red), 0 0 18px rgba(255, 0, 64, 0.5), 1px 1px 3px rgba(0, 0, 0, 0.8); }
+      50% { text-shadow: 0 0 8px var(--neon-red), 0 0 16px var(--neon-red), 0 0 24px rgba(255, 0, 64, 0.7), 1px 1px 3px rgba(0, 0, 0, 0.8); }
     }
 
     .hero p {
-      font-size: 1.3rem; 
+      font-size: 1rem; 
       margin-bottom: 2rem;
       color: var(--neon-blue); 
-      text-shadow: 0 0 8px var(--neon-blue);
+      text-shadow: 0 0 6px var(--neon-blue);
       white-space: pre-line;
-      max-width: 600px;
+      max-width: 500px;
       margin-left: auto;
       margin-right: auto;
       position: relative;
       z-index: 2;
+      font-weight: 500;
     }
 
     .btn-primary {
-      background: linear-gradient(45deg, var(--neon-red), var(--neon-blue), var(--neon-purple));
+      background: linear-gradient(45deg, var(--neon-orange), #ff8800, var(--neon-orange));
       background-size: 200% 200%;
       padding: 1.2rem 2.5rem; 
-      color: var(--text-light);
+      color: #000;
       font-weight: 700; 
       font-size: 1.1rem; 
       border-radius: var(--btn-radius);
       cursor: pointer; 
-      box-shadow: 0 0 20px rgba(255, 0, 64, 0.5);
+      box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
       transition: all 0.3s ease;
       border: none; 
       text-decoration: none;
       display: inline-block;
-      animation: gradientShift 3s ease infinite;
+      animation: orangeGlow 3s ease infinite;
       position: relative;
       overflow: hidden;
+      text-align: center;
+      margin: 0 auto;
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, var(--neon-red), var(--neon-blue), var(--neon-purple), var(--neon-orange));
-      background-size: 400% 400%;
-      border-radius: var(--btn-radius);
-      z-index: -1;
-      animation: borderGlow 2s linear infinite;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .btn-primary:hover::before {
-      opacity: 1;
-    }
-
-    @keyframes borderGlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes orangeGlow {
+      0% { 
+        background-position: 0% 50%; 
+        box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+        text-shadow: 0 0 8px rgba(255, 102, 0, 0.8);
+      }
+      50% { 
+        background-position: 100% 50%; 
+        box-shadow: 0 0 30px rgba(255, 102, 0, 0.9);
+        text-shadow: 0 0 12px rgba(255, 102, 0, 1);
+      }
+      100% { 
+        background-position: 0% 50%; 
+        box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+        text-shadow: 0 0 8px rgba(255, 102, 0, 0.8);
+      }
     }
 
     .btn-primary:hover {
       transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255, 0, 64, 0.7);
+      box-shadow: 0 8px 35px rgba(255, 102, 0, 0.8);
+      text-shadow: 0 0 15px rgba(255, 102, 0, 1);
     }
 
     .packages {
@@ -311,31 +242,70 @@
       color: var(--text-light);
       display: flex; 
       flex-direction: column;
-      text-align: center;
+      text-align: left;
       border: 1px solid rgba(255, 102, 0, 0.4);
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(10px);
       justify-content: space-between;
-      min-height: 400px;
+      min-height: 500px;
     }
 
-    .package-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(255, 102, 0, 0.1), transparent);
-      animation: cardRotate 8s linear infinite;
-      z-index: -1;
+    .package-description {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-light);
     }
 
-    @keyframes cardRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .package-goal {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: rgba(0, 208, 255, 0.1);
+      border-radius: 8px;
+      border-left: 3px solid var(--neon-blue);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .system-info {
+      margin: 4rem 0;
+    }
+
+    .system-card {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(30, 0, 50, 0.7));
+      padding: 3rem;
+      border-radius: 15px;
+      border: 1px solid rgba(0, 208, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 208, 255, 0.2);
+      backdrop-filter: blur(15px);
+      text-align: center;
+    }
+
+    .system-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--neon-blue);
+      text-shadow: 0 0 12px var(--neon-blue);
+    }
+
+    .system-card p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: var(--text-light);
+    }
+
+    .system-highlight {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--neon-orange);
+      text-shadow: 0 0 10px var(--neon-orange);
+      padding: 1rem;
+      background: rgba(255, 102, 0, 0.1);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 102, 0, 0.3);
     }
 
     .package-card:hover {
@@ -350,19 +320,10 @@
       transform: scale(1.05);
     }
 
-    .package-card:nth-child(2):hover {
-      box-shadow: 0 15px 40px rgba(255, 102, 0, 0.6);
-    }
-
     .package-card h3 {
       margin-top: 0; 
       margin-bottom: 1rem;
       font-size: 1.4rem;
-      color: var(--neon-orange);
-      text-shadow: 0 0 10px var(--neon-orange);
-    }
-
-    .package-card:nth-child(2) h3 {
       color: var(--neon-orange);
       text-shadow: 0 0 10px var(--neon-orange);
     }
@@ -373,17 +334,6 @@
       color: var(--neon-orange);
       text-shadow: 0 0 15px var(--neon-orange);
       margin-bottom: 1rem;
-      animation: priceGlow 2s ease-in-out infinite;
-    }
-
-    .package-card:nth-child(2) .package-price {
-      color: var(--neon-orange);
-      text-shadow: 0 0 15px var(--neon-orange);
-    }
-
-    @keyframes priceGlow {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
     }
 
     .package-card > p {
@@ -416,6 +366,98 @@
       text-shadow: 0 0 5px var(--neon-green);
     }
 
+    /* Customer Testimonials Section */
+    .testimonials {
+      margin: 4rem 0;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(30, 0, 50, 0.7));
+      border-radius: 20px;
+      border: 1px solid rgba(0, 208, 255, 0.3);
+      box-shadow: 0 8px 32px rgba(0, 208, 255, 0.2);
+      backdrop-filter: blur(15px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonials h3 {
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: var(--neon-blue);
+      text-shadow: 0 0 12px var(--neon-blue);
+      text-align: center;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: linear-gradient(135deg, rgba(0, 15, 30, 0.8), rgba(10, 0, 30, 0.6));
+      border-radius: 15px;
+      padding: 2rem;
+      border: 1px solid rgba(0, 208, 255, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 208, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 208, 255, 0.4);
+      border-color: rgba(0, 208, 255, 0.6);
+    }
+
+    .telegram-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      color: var(--neon-blue);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .telegram-icon {
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(45deg, var(--neon-blue), var(--neon-cyan));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: white;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--neon-orange);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .testimonial-rating {
+      color: var(--neon-green);
+      margin-left: auto;
+      font-size: 1.1rem;
+    }
+
     .crypto-widget {
       margin: 4rem 0;
       text-align: center;
@@ -439,20 +481,11 @@
       backdrop-filter: blur(15px);
     }
 
-    /* Enhanced mobile widget support */
     gecko-coin-list-widget {
       display: block !important;
       width: 100% !important;
       height: auto !important;
       min-height: 400px !important;
-    }
-
-    /* Mobile widget fallback */
-    .mobile-widget-fallback {
-      display: none;
-      text-align: center;
-      padding: 2rem;
-      color: var(--text-muted);
     }
 
     @media (max-width: 768px) {
@@ -559,7 +592,6 @@
       max-height: 200px;
     }
 
-    /* Accessibility improvements */
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -568,391 +600,10 @@
       }
     }
 
-    /* Focus states for better accessibility */
     .btn-primary:focus,
     .faq-question:focus {
       outline: 2px solid var(--neon-blue);
       outline-offset: 2px;
-    }
-
-    .features {
-      margin: 4rem 0;
-      padding: 3rem 2rem;
-      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(30, 0, 50, 0.7));
-      border-radius: 20px;
-      border: 1px solid rgba(0, 208, 255, 0.3);
-      box-shadow: 0 8px 32px rgba(0, 208, 255, 0.2);
-      backdrop-filter: blur(15px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .features::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(0, 208, 255, 0.05), transparent);
-      animation: featureRotate 15s linear infinite;
-      z-index: -1;
-    }
-
-    @keyframes featureRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .features-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .features-visual {
-      position: relative;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .device {
-      position: absolute;
-      border-radius: 15px;
-      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-      box-shadow: 0 8px 25px rgba(0, 208, 255, 0.3);
-      border: 2px solid rgba(0, 208, 255, 0.4);
-    }
-
-    .laptop {
-      width: 280px;
-      height: 180px;
-      left: -20px;
-      top: 50px;
-      z-index: 2;
-    }
-
-    .laptop::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 8px;
-      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-      border-radius: 0 0 8px 8px;
-    }
-
-    .mobile {
-      width: 120px;
-      height: 200px;
-      right: -10px;
-      top: 80px;
-      z-index: 3;
-      border-radius: 25px;
-    }
-
-    .screen {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
-      border-radius: inherit;
-      padding: 15px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mobile .screen {
-      padding: 20px 10px;
-    }
-
-    .device-header {
-      position: absolute;
-      top: 8px;
-      left: 10px;
-      right: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-    }
-
-    .mobile .device-header {
-      top: 12px;
-      left: 8px;
-      right: 8px;
-    }
-
-    .logo {
-      font-size: 8px;
-      font-weight: bold;
-      padding: 2px 4px;
-      border-radius: 3px;
-      text-shadow: 0 0 3px currentColor;
-    }
-
-    .mobile .logo {
-      font-size: 6px;
-      padding: 1px 3px;
-    }
-
-    .tradingview-logo {
-      background: linear-gradient(45deg, #2962ff, #1e53e5);
-      color: white;
-      border: 1px solid rgba(41, 98, 255, 0.5);
-    }
-
-    .cryptxleak-logo {
-      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-      color: white;
-      border: 1px solid rgba(0, 208, 255, 0.5);
-    }
-
-    .chart-line {
-      position: absolute;
-      top: 30%;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--neon-blue), var(--neon-green), var(--neon-red));
-      border-radius: 2px;
-      animation: chartPulse 2s ease-in-out infinite;
-    }
-
-    @keyframes chartPulse {
-      0%, 100% { opacity: 0.8; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.5); }
-    }
-
-    .chart-bars {
-      position: absolute;
-      bottom: 30%;
-      left: 15%;
-      right: 15%;
-      height: 40px;
-      display: flex;
-      align-items: flex-end;
-      gap: 8px;
-    }
-
-    .bar {
-      flex: 1;
-      background: linear-gradient(180deg, var(--neon-orange), var(--neon-red));
-      border-radius: 2px 2px 0 0;
-      animation: barGrow 3s ease-in-out infinite;
-    }
-
-    .bar:nth-child(1) { height: 60%; animation-delay: 0s; }
-    .bar:nth-child(2) { height: 100%; animation-delay: 0.5s; }
-    .bar:nth-child(3) { height: 40%; animation-delay: 1s; }
-    .bar:nth-child(4) { height: 80%; animation-delay: 1.5s; }
-    .bar:nth-child(5) { height: 70%; animation-delay: 2s; }
-
-    @keyframes barGrow {
-      0%, 100% { transform: scaleY(0.8); }
-      50% { transform: scaleY(1.2); }
-    }
-
-    .signal {
-      position: absolute;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 10px;
-      font-weight: bold;
-      color: white;
-      text-shadow: 0 0 5px currentColor;
-      animation: signalBlink 2s ease-in-out infinite;
-    }
-
-    .signal.buy {
-      background: linear-gradient(45deg, var(--neon-green), #00ff44);
-      top: 20%;
-      right: 15%;
-    }
-
-    .signal.sell {
-      background: linear-gradient(45deg, var(--neon-red), #ff4400);
-      bottom: 15%;
-      right: 5px;
-      font-size: 8px;
-      padding: 2px 4px;
-    }
-
-    @keyframes signalBlink {
-      0%, 100% { opacity: 0.7; box-shadow: 0 0 5px currentColor; }
-      50% { opacity: 1; box-shadow: 0 0 15px currentColor; }
-    }
-
-    .notification {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
-      padding: 4px 6px;
-      border-radius: 8px;
-      font-size: 8px;
-      font-weight: bold;
-      color: white;
-      animation: notificationPulse 1.5s ease-in-out infinite;
-    }
-
-    @keyframes notificationPulse {
-      0%, 100% { transform: translateX(-50%) scale(1); }
-      50% { transform: translateX(-50%) scale(1.1); }
-    }
-
-    .mini-chart {
-      position: relative;
-      height: 60px;
-      margin-top: 40px;
-    }
-
-    .mini-line {
-      position: absolute;
-      top: 20px;
-      left: 5px;
-      right: 5px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--neon-green), var(--neon-red));
-      animation: miniChartFlow 2s ease-in-out infinite;
-    }
-
-    @keyframes miniChartFlow {
-      0% { transform: scaleX(0.8); opacity: 0.6; }
-      50% { transform: scaleX(1.1); opacity: 1; }
-      100% { transform: scaleX(0.8); opacity: 0.6; }
-    }
-
-    .features-content {
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-
-    .feature-item h4 {
-      color: var(--neon-blue);
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      text-shadow: 0 0 8px var(--neon-blue);
-      font-weight: 700;
-    }
-
-    .feature-item p {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .feature-ctas {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .btn-feature {
-      background: linear-gradient(135deg, rgba(17, 17, 17, 0.9), rgba(30, 0, 50, 0.7));
-      border: 1px solid rgba(255, 102, 0, 0.4);
-      padding: 0.8rem 1.2rem;
-      border-radius: 8px;
-      color: var(--text-light);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.2rem;
-      font-size: 0.9rem;
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-      min-width: 90px;
-    }
-
-    .btn-feature::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(255, 102, 0, 0.1), transparent);
-      animation: btnRotate 6s linear infinite;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .btn-feature:hover::before {
-      opacity: 1;
-    }
-
-    @keyframes btnRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .btn-feature.featured {
-      border-color: rgba(255, 102, 0, 0.8);
-      box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3);
-      transform: scale(1.05);
-    }
-
-    .btn-feature:hover {
-      transform: translateY(-2px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
-      border-color: rgba(255, 102, 0, 0.8);
-    }
-
-    .btn-feature.featured:hover {
-      transform: translateY(-2px) scale(1.1);
-      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.6);
-    }
-
-    .cta-label {
-      font-size: 0.85rem;
-      color: var(--neon-orange);
-      text-shadow: 0 0 5px var(--neon-orange);
-    }
-
-    .cta-price {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text-light);
-    }
-
-    @media (max-width: 768px) {
-      .features-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        text-align: center;
-      }
-      
-      .features-visual {
-        height: 300px;
-      }
-      
-      .laptop {
-        width: 200px;
-        height: 130px;
-        left: 10px;
-        top: 30px;
-      }
-      
-      .mobile {
-        width: 90px;
-        height: 150px;
-        right: 10px;
-        top: 60px;
-      }
     }
 
   </style>
@@ -960,134 +611,163 @@
 <body>
   <header>
     <div class="header-content">
-      <h1>CryptXLeak</h1>
+      <h1>cryptXleak</h1>
     </div>
   </header>
   
   <main>
     <section class="hero" aria-label="Hero Section">
-      <h2>+30x Power AI's packed in 1 Indicator.<br>Welcome to Next-Gen Trading.</h2>
+      <h2>Professional Trading Made Simple.<br>Maximize Returns with AI-Powered Precision.</h2>
       <p>Automate your strategy, minimize errors, maximize returns.</p>
     </section>
 
     <section class="packages" aria-label="Package Offers">
       <div class="package-card">
-        <h3>Basic Package</h3>
+        <h3>🟢 Basic Package</h3>
         <div class="package-price">CHF 179.–</div>
-        <p>Ideal for Beginners</p>
-        <ul>
-          <li>Basic Indicator (+20 AI's)</li>
-          <li>Lifetime Access</li>
-        </ul>
-        <button class="btn-primary" onclick="document.querySelector('stripe-buy-button').click()">Get Access</button>
-        <div style="display: none;">
-          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-          <stripe-buy-button
-            buy-button-id="buy_btn_1RY94gQt7nyqcJPzq7suJFCQ"
-            publishable-key="pk_test_51RXrYeQt7nyqcJPzmYuv0wJONMT9vaUVteuAgOWz76ltE4d6GSRGwy9A0WGVY4pMjXUoT9iPXzRaI2U76hSdUTOt00RNSCOo0I">
-          </stripe-buy-button>
+        <p><strong>Ideal for Beginners & Curious Minds.</strong></p>
+        <div class="package-description">
+          Get access to our proven <strong>Basic Indicator</strong>, equipped with over 20 intelligent modules for your first profitable setups.
         </div>
+        <div class="package-goal">
+          📌 <strong>Goal:</strong> Build market intuition, understand signals, without overwhelming risk.
+        </div>
+        <ul>
+          <li>✔ Lifetime Access</li>
+          <li>✔ No subscription required</li>
+        </ul>
+        <a href="https://buy.stripe.com/dRmaEZ0J73ub1izbjy8og03" class="btn-primary">Get Access</a>
       </div>
 
       <div class="package-card">
-        <h3>🔥 Pro Package</h3>
+        <h3>🔵 Pro Package</h3>
         <div class="package-price">CHF 249.–</div>
-        <p>For Active Traders</p>
-        <ul>
-          <li>Pro Indicator (+30 AI's)</li>
-          <li>Lifetime Access</li>
-        </ul>
-        <button class="btn-primary" onclick="document.querySelectorAll('stripe-buy-button')[1].click()">Get Access</button>
-        <div style="display: none;">
-          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-          <stripe-buy-button
-            buy-button-id="buy_btn_1RY94gQt7nyqcJPzq7suJFCQ"
-            publishable-key="pk_test_51RXrYeQt7nyqcJPzmYuv0wJONMT9vaUVteuAgOWz76ltE4d6GSRGwy9A0WGVY4pMjXUoT9iPXzRaI2U76hSdUTOt00RNSCOo0I">
-          </stripe-buy-button>
+        <p><strong>For ambitious traders who act daily.</strong></p>
+        <div class="package-description">
+          Use the <strong>Pro Indicator</strong> with over 30 AI components – trained on current market behavior, manipulation zones and volume distortions.
         </div>
+        <div class="package-goal">
+          📌 <strong>Goal:</strong> Identify intraday opportunities, better time risks, improve position management.
+        </div>
+        <ul>
+          <li>✔ Lifetime Access</li>
+          <li>✔ Advanced tools for precise trading</li>
+        </ul>
+        <a href="https://buy.stripe.com/eVq6oJdvT9Sz0ev5Ze8og04" class="btn-primary">Get Access</a>
       </div>
 
       <div class="package-card">
-        <h3>Premium Package</h3>
+        <h3>🔴 Premium Package</h3>
         <div class="package-price">CHF 649.–</div>
-        <p>Full Power for Professionals</p>
+        <p><strong>Maximum control for serious professionals.</strong></p>
+        <div class="package-description">
+          The <strong>Premium Indicator</strong> combines over 40 AI-powered signals including multi-timeframe scanning, liquidity tracking & high-volatility pulse detection.
+        </div>
+        <div class="package-goal">
+          📌 <strong>Goal:</strong> Systematic, scalable trading with maximum information density.
+        </div>
         <ul>
-          <li>Premium Indicator (+40 AI's)</li>
-          <li>Lifetime Access</li>
+          <li>✔ Lifetime Access</li>
+          <li>✔ Full system depth & market analysis</li>
         </ul>
-        <button class="btn-primary" onclick="document.querySelectorAll('stripe-buy-button')[2].click()">Get Access</button>
-        <div style="display: none;">
-          <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-          <stripe-buy-button
-            buy-button-id="buy_btn_1RY94gQt7nyqcJPzq7suJFCQ"
-            publishable-key="pk_test_51RXrYeQt7nyqcJPzmYuv0wJONMT9vaUVteuAgOWz76ltE4d6GSRGwy9A0WGVY4pMjXUoT9iPXzRaI2U76hSdUTOt00RNSCOo0I">
-          </stripe-buy-button>
+        <a href="https://buy.stripe.com/4gM5kFdvT5Cj7GX0EU8og05" class="btn-primary">Get Access</a>
+      </div>
+    </section>
+
+    <section class="system-info" aria-label="System Information">
+      <div class="system-card">
+        <h3>📊 What does our system stand for?</h3>
+        <p>Our indicators are not colorful lines. They are <strong>intelligent analysis units</strong> that work with over 30+ optimized AI engines. Developed for real traders who seek structure instead of noise.</p>
+        <div class="system-highlight">
+          → <strong>No subscription. No bullshit. Just access. Forever.</strong>
         </div>
       </div>
     </section>
 
-    <section class="features" aria-label="Product Features">
-      <div class="features-container">
-        <div class="features-visual">
-          <div class="device laptop">
-            <div class="screen">
-              <div class="device-header">
-                <div class="logo tradingview-logo">TradingView</div>
-                <div class="logo cryptxleak-logo">CryptXLeak</div>
-              </div>
-              <div class="chart-line"></div>
-              <div class="chart-bars">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-              </div>
-              <div class="signal buy">BUY</div>
-            </div>
+    <section class="testimonials" aria-label="Customer Testimonials">
+      <h3>What Our Traders Say</h3>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
           </div>
-          <div class="device mobile">
-            <div class="screen">
-              <div class="device-header">
-                <div class="logo tradingview-logo">TV</div>
-                <div class="logo cryptxleak-logo">CXL</div>
-              </div>
-              <div class="notification">📱 Alert!</div>
-              <div class="mini-chart">
-                <div class="mini-line"></div>
-                <div class="signal sell">SELL</div>
-              </div>
-            </div>
+          <div class="testimonial-text">
+            "CryptX's indicator is incredibly unique as a coach and supporter. His comprehensive knowledge about the crypto market keeps him always up to date with what the market is doing, and he shares this transparently with his customers. Additionally, it's worth mentioning that he places great value on fair customer interaction. Thanks from me for the great support."
+          </div>
+          <div class="testimonial-author">
+            <span>@TradingPro_Mike</span>
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
           </div>
         </div>
-        
-        <div class="features-content">
-          <div class="feature-item">
-            <h4>Maximize ProfitPro in every asset and timeframe</h4>
-            <p>Conquer the world of cryptocurrency in any timeframe on TradingView.</p>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
           </div>
-          <div class="feature-item">
-            <h4>Explore additional features to elevate your trading</h4>
-            <p>Unlock the power of our volatility bands, support/resistance levels and more!</p>
+          <div class="testimonial-text">
+            "I remember when CryptX started with crypto. Without support from others, only believing in himself. Today I see him with successful results, which helped me build my portfolio and it's currently worth a fortune. Thanks to him I can ask for help with any investment question. Thank him, my investment could increase by 30% in the shortest time."
           </div>
-          <div class="feature-item">
-            <h4>Stay one step ahead with real-time alerts</h4>
-            <p>Customize your own alerts and get instant notifications directly to your phone or computer.</p>
+          <div class="testimonial-author">
+            <span>@CryptoInvestor_Alex</span>
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
           </div>
-          
-          <div class="feature-ctas">
-            <button class="btn-feature" onclick="document.querySelector('stripe-buy-button').click()">
-              <span class="cta-label">Basic</span>
-              <span class="cta-price">CHF 179</span>
-            </button>
-            <button class="btn-feature featured" onclick="document.querySelectorAll('stripe-buy-button')[1].click()">
-              <span class="cta-label">🔥 Pro</span>
-              <span class="cta-price">CHF 249</span>
-            </button>
-            <button class="btn-feature" onclick="document.querySelectorAll('stripe-buy-button')[2].click()">
-              <span class="cta-label">Premium</span>
-              <span class="cta-price">CHF 649</span>
-            </button>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "Hello dear CryptX, I wanted to thank you for standing by my side with advice and action in the crypto field and also in other topics like mindset! Here I was really able to learn a lot. Not to forget the huge gains since 2017!!! I'm glad I contacted you about these topics and various coins, the facts speak for themselves."
+          </div>
+          <div class="testimonial-author">
+            <span>@SuccessTrader_Sam</span>
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "Thanks to the CryptX indicator, I have been able to achieve very large gains since 2017. My portfolio has almost increased tenfold. I learned to invest with controlled risk and am advised and supported around the clock very well. It's very transparent and all risks are clearly pointed out. I learned a lot about crypto currencies during this time and feel much more secure."
+          </div>
+          <div class="testimonial-author">
+            <span>@Portfolio_Winner</span>
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "Since I don't understand much about cryptocurrencies, CryptX took over the management of my portfolio. He always keeps me informed and gives tips on where I should invest. I was able to more than double my capital and most importantly, I always have control over my crypto currencies. I can only recommend the CryptX indicator to everyone."
+          </div>
+          <div class="testimonial-author">
+            <span>@Crypto_Newbie_Success</span>
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "Started in January 2022. Didn't expect much and was surprised by the world. Knowledge 💯, Concept 💯, Support 💯. Many thanks to every single team member 🙏. The best community! Haven't been with it for long but can already say I've learned a lot. The live coaching and market analysis are mega. Keep it up! Special praise to the traders!"
+          </div>
+          <div class="testimonial-author">
+            <span>@Community_Member_2022</span>
+            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
           </div>
         </div>
       </div>
@@ -1104,16 +784,6 @@
           coin-ids="bitcoin,ethereum,binancecoin,ripple,cardano,solana,polkadot,dogecoin,litecoin" 
           initial-currency="usd">
         </gecko-coin-list-widget>
-        
-        <div class="mobile-widget-fallback">
-          <h4 style="color: var(--neon-blue); margin-bottom: 1rem;">📱 Mobile Widget</h4>
-          <p>For the best experience with live market data, we recommend the desktop version.</p>
-          <p style="margin-top: 1rem;">
-            <a href="https://www.coingecko.com" target="_blank" style="color: var(--neon-orange); text-decoration: none;">
-              → View current prices on CoinGecko
-            </a>
-          </p>
-        </div>
       </div>
     </section>
 
@@ -1125,7 +795,7 @@
           width="100%" 
           height="500" 
           frameborder="0"
-          style="border-radius: 15px; background: linear-gradient(135deg, rgba(17, 17, 17, 0.95), rgba(30, 0, 50, 0.8)); box-shadow: 0 8px 32px rgba(0, 208, 255, 0.3); border: 2px solid rgba(0, 208, 255, 0.4);">
+          style="border-radius: 15px;">
         </iframe>
       </div>
     </section>
