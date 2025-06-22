@@ -67,18 +67,6 @@
       opacity: 1;
     }
 
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-      z-index: -1;
-      pointer-events: none;
-    }
-
     header {
       position: sticky; 
       top: 0; 
@@ -252,6 +240,43 @@
       min-height: 500px;
     }
 
+    .package-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(255, 102, 0, 0.5);
+      border-color: rgba(255, 102, 0, 0.8);
+    }
+
+    .package-card:nth-child(2) {
+      border-color: rgba(255, 102, 0, 0.6);
+      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
+      transform: scale(1.05);
+    }
+
+    .package-card h3 {
+      margin-top: 0; 
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      color: var(--neon-orange);
+      text-shadow: 0 0 10px var(--neon-orange);
+      text-align: center;
+    }
+
+    .package-price {
+      font-size: 2.5rem; 
+      font-weight: 900; 
+      color: var(--neon-orange);
+      text-shadow: 0 0 15px var(--neon-orange);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .package-card > p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
     .package-description {
       margin-bottom: 1rem;
       font-size: 0.95rem;
@@ -267,6 +292,31 @@
       border-left: 3px solid var(--neon-blue);
       font-size: 0.9rem;
       line-height: 1.5;
+    }
+
+    .package-card ul {
+      list-style: none; 
+      padding-left: 0; 
+      margin: 0 0 2rem 0;
+      width: 100%;
+      flex-grow: 1;
+    }
+
+    .package-card ul li {
+      margin: 0.5rem 0;
+      font-size: 1rem;
+      text-align: left;
+      padding-left: 0;
+      position: relative;
+    }
+
+    .package-card .btn-primary {
+      margin-top: auto;
+      align-self: center;
+      width: fit-content;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .system-info {
@@ -308,64 +358,6 @@
       border: 1px solid rgba(255, 102, 0, 0.3);
     }
 
-    .package-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(255, 102, 0, 0.5);
-      border-color: rgba(255, 102, 0, 0.8);
-    }
-
-    .package-card:nth-child(2) {
-      border-color: rgba(255, 102, 0, 0.6);
-      box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
-      transform: scale(1.05);
-    }
-
-    .package-card h3 {
-      margin-top: 0; 
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-      color: var(--neon-orange);
-      text-shadow: 0 0 10px var(--neon-orange);
-    }
-
-    .package-price {
-      font-size: 2.5rem; 
-      font-weight: 900; 
-      color: var(--neon-orange);
-      text-shadow: 0 0 15px var(--neon-orange);
-      margin-bottom: 1rem;
-    }
-
-    .package-card > p {
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
-      color: var(--text-muted);
-    }
-
-    .package-card ul {
-      list-style: none; 
-      padding-left: 0; 
-      margin: 0 0 2rem 0;
-      width: 100%;
-      flex-grow: 1;
-    }
-
-    .package-card ul li {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-      text-align: left;
-      padding-left: 1rem;
-      position: relative;
-    }
-
-    .package-card ul li::before {
-      content: '⚡';
-      position: absolute;
-      left: -0.5rem;
-      color: var(--neon-green);
-      text-shadow: 0 0 5px var(--neon-green);
-    }
-
     /* Customer Testimonials Section */
     .testimonials {
       margin: 4rem 0;
@@ -388,9 +380,9 @@
     }
 
     .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -398,17 +390,20 @@
     .testimonial-card {
       background: linear-gradient(135deg, rgba(0, 15, 30, 0.8), rgba(10, 0, 30, 0.6));
       border-radius: 15px;
-      padding: 2rem;
+      padding: 2rem 2.5rem;
       border: 1px solid rgba(0, 208, 255, 0.3);
       box-shadow: 0 4px 20px rgba(0, 208, 255, 0.2);
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(10px);
       transition: all 0.3s ease;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .testimonial-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
       box-shadow: 0 8px 30px rgba(0, 208, 255, 0.4);
       border-color: rgba(0, 208, 255, 0.6);
     }
@@ -436,11 +431,12 @@
     }
 
     .testimonial-text {
-      font-size: 1rem;
+      font-size: 1.1rem;
       line-height: 1.6;
       color: var(--text-light);
       margin-bottom: 1.5rem;
       font-style: italic;
+      flex-grow: 1;
     }
 
     .testimonial-author {
@@ -450,12 +446,11 @@
       color: var(--neon-orange);
       font-weight: 600;
       font-size: 0.9rem;
+      margin-top: auto;
     }
 
     .testimonial-rating {
-      color: var(--neon-green);
-      margin-left: auto;
-      font-size: 1.1rem;
+      display: none;
     }
 
     .crypto-widget {
@@ -479,13 +474,26 @@
       min-height: 450px;
       position: relative;
       backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    gecko-coin-list-widget {
-      display: block !important;
-      width: 100% !important;
-      height: auto !important;
-      min-height: 400px !important;
+    .tradingview-widget-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tradingview-widget-copyright {
+      margin-top: 1rem;
+    }
+
+    .blue-text {
+      color: var(--neon-blue) !important;
+      text-decoration: none;
     }
 
     @media (max-width: 768px) {
@@ -589,7 +597,7 @@
     .faq-answer.show {
       display: block;
       padding: 1.5rem;
-      max-height: 200px;
+      max-height: 400px;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -693,11 +701,10 @@
             <span>Telegram Feedback</span>
           </div>
           <div class="testimonial-text">
-            "CryptX's indicator is incredibly unique as a coach and supporter. His comprehensive knowledge about the crypto market keeps him always up to date with what the market is doing, and he shares this transparently with his customers. Additionally, it's worth mentioning that he places great value on fair customer interaction. Thanks from me for the great support."
+            "I’ve used dozens of indicators before, but none came close to how CryptXleak reads the market. It doesn’t just show signals but it understands market psychology. F***** Game changer."
           </div>
           <div class="testimonial-author">
-            <span>@TradingPro_Mike</span>
-            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <span>@IndependentTrader_Sarah</span>
           </div>
         </div>
 
@@ -707,11 +714,10 @@
             <span>Telegram Feedback</span>
           </div>
           <div class="testimonial-text">
-            "I remember when CryptX started with crypto. Without support from others, only believing in himself. Today I see him with successful results, which helped me build my portfolio and it's currently worth a fortune. Thanks to him I can ask for help with any investment question. Thank him, my investment could increase by 30% in the shortest time."
+            "And by the way, huge respect for your project! Here it really builds momentum because the content and the calls are absolutely on point..."
           </div>
           <div class="testimonial-author">
-            <span>@CryptoInvestor_Alex</span>
-            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <span>@RespectfulTrader_Mark</span>
           </div>
         </div>
 
@@ -721,11 +727,10 @@
             <span>Telegram Feedback</span>
           </div>
           <div class="testimonial-text">
-            "Hello dear CryptX, I wanted to thank you for standing by my side with advice and action in the crypto field and also in other topics like mindset! Here I was really able to learn a lot. Not to forget the huge gains since 2017!!! I'm glad I contacted you about these topics and various coins, the facts speak for themselves."
+            "You can't give us any better feedback than this. You will be enthusiastic and quickly notice that we are something different than those out there who calculate everything full of hype for everyone. 💙"
           </div>
           <div class="testimonial-author">
-            <span>@SuccessTrader_Sam</span>
-            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <span>@GratefulClient_Lisa</span>
           </div>
         </div>
 
@@ -735,11 +740,10 @@
             <span>Telegram Feedback</span>
           </div>
           <div class="testimonial-text">
-            "Thanks to the CryptX indicator, I have been able to achieve very large gains since 2017. My portfolio has almost increased tenfold. I learned to invest with controlled risk and am advised and supported around the clock very well. It's very transparent and all risks are clearly pointed out. I learned a lot about crypto currencies during this time and feel much more secure."
+            "You can see that very clearly! The fact that you are directly approachable etc. makes an insane difference. With you I can say I stand 💯 behind it."
           </div>
           <div class="testimonial-author">
-            <span>@Portfolio_Winner</span>
-            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+            <span>@LoyalSupporter_Dave</span>
           </div>
         </div>
 
@@ -749,25 +753,140 @@
             <span>Telegram Feedback</span>
           </div>
           <div class="testimonial-text">
-            "Since I don't understand much about cryptocurrencies, CryptX took over the management of my portfolio. He always keeps me informed and gives tips on where I should invest. I was able to more than double my capital and most importantly, I always have control over my crypto currencies. I can only recommend the CryptX indicator to everyone."
-          </div>
-          <div class="testimonial-author">
-            <span>@Crypto_Newbie_Success</span>
-            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <div class="telegram-header">
-            <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
-          </div>
-          <div class="testimonial-text">
-            "Started in January 2022. Didn't expect much and was surprised by the world. Knowledge 💯, Concept 💯, Support 💯. Many thanks to every single team member 🙏. The best community! Haven't been with it for long but can already say I've learned a lot. The live coaching and market analysis are mega. Keep it up! Special praise to the traders!"
+            "Started in January 2022. Didn't expect much and was surprised by the world. Knowledge 💯 Concept 💯 Support 💯 Many thanks to every single team member 🙏 The best community!"
           </div>
           <div class="testimonial-author">
             <span>@Community_Member_2022</span>
-            <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "Haven't been with it for long but can already say I've learned a lot. The live coaching and market analysis are amazing. Keep it up! Special praise to the traders!"
+          </div>
+          <div class="testimonial-author">
+            <span>@NewLearner_John</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "Hello dear CryptX, I wanted to thank you for standing by my side with advice and action. You changed my mindset positively. Together I have taken the first steps in the right direction for investment. Every single investment tip from you I implemented and was able to multiply my wealth many times over. I'm happy that I have such a competent friend by my side! Thank you for everything ❤️"
+          </div>
+          <div class="testimonial-author">
+            <span>@TransformedInvestor_Emma</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "CryptX is unique as a coach and supporter. His general expertise about the crypto market keeps him always up to date with what the market is doing, and he shares this transparently with his customers. Additionally, it's worth mentioning that he places great value on fair customer interaction. Thanks from me for the great support."
+          </div>
+          <div class="testimonial-author">
+            <span>@TradingPro_Mike</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "I remember when CryptX started with crypto. Without support from others, only believing in himself. Today I see him with successful results, which helped me build my portfolio. Thanks to him I can ask for help with any investment question. My investment could increase by 30% in the shortest time."
+          </div>
+          <div class="testimonial-author">
+            <span>@CryptoInvestor_Alex</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "CryptX helped me build a comfortable and automated trading bot setup. Thanks to using the most modern technologies, I have the risk very well under control."
+          </div>
+          <div class="testimonial-author">
+            <span>@AutomatedTrader_Tom</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "I feel honoured to be an early part of the growing cryptx unit."
+          </div>
+          <div class="testimonial-author">
+            <span>@EarlyAdopter_Chris</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "I've spent 3 years jumping between tools. This is the first one that actually shows me where and why things are happening. Not just green = buy."
+          </div>
+          <div class="testimonial-author">
+            <span>@ExperiencedTrader_Alex</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "What used to be gut feeling is now a system. The Pro Indicator filters fakeouts before I even notice them."
+          </div>
+          <div class="testimonial-author">
+            <span>@SystemTrader_Ben</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "Took two weeks and the Premium package paid for itself. Not because of magic – but because I finally understand why a setup works."
+          </div>
+          <div class="testimonial-author">
+            <span>@ProfitableTrader_Dan</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="telegram-header">
+            <div class="telegram-icon">📱</div>
+            <span>Telegram Feedback</span>
+          </div>
+          <div class="testimonial-text">
+            "I'm more of a scalper guy. What's wild is – this indicator doesn't chase every move. It waits. That's the edge."
+          </div>
+          <div class="testimonial-author">
+            <span>@ScalperTrader_Mike</span>
           </div>
         </div>
       </div>
@@ -776,14 +895,25 @@
     <section class="crypto-widget" aria-label="Live Crypto Prices">
       <h3>Live Market Data</h3>
       <div class="widget-container">
-        <gecko-coin-list-widget 
-          locale="en" 
-          dark-mode="true" 
-          transparent-background="true" 
-          outlined="true" 
-          coin-ids="bitcoin,ethereum,binancecoin,ripple,cardano,solana,polkadot,dogecoin,litecoin" 
-          initial-currency="usd">
-        </gecko-coin-list-widget>
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+          <div class="tradingview-widget-container__widget"></div>
+          <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+          <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+          {
+          "symbol": "BINANCE:BTCUSD",
+          "width": "100%",
+          "height": 400,
+          "locale": "en",
+          "dateRange": "12M",
+          "colorTheme": "dark",
+          "isTransparent": true,
+          "autosize": true,
+          "largeChartUrl": ""
+        }
+          </script>
+        </div>
+        <!-- TradingView Widget END -->
       </div>
     </section>
 
@@ -804,16 +934,155 @@
       <h3>Frequently Asked Questions</h3>
       <div class="faq-item">
         <div class="faq-question" tabindex="0">How does the indicator activation work?</div>
-        <div class="faq-answer">During the purchase process, you provide your TradingView username. We will activate you within 24 hours.</div>
+        <div class="faq-answer">
+          During the purchase process, you provide your TradingView username. We will activate you within 24 hours.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question" tabindex="0">Do I need special software?</div>
-        <div class="faq-answer">No. Everything runs through TradingView, Telegram and your browser – no installation needed.</div>
+        <div class="faq-answer">
+          No. Everything runs through TradingView, Telegram and your browser – no installation needed.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question" tabindex="0">How secure are my payments?</div>
-        <div class="faq-answer">All transactions run encrypted through Stripe or PayPal.</div>
+        <div class="faq-answer">
+          All transactions run encrypted through Stripe or PayPal.
+        </div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question" tabindex="0">I'm a complete beginner – is this for me?</div>
-        <div class="faq-answer">Yes. Our system is built for
+        <div class="faq-answer">
+          Yes. Our system is built for complete newcomers too. The setup is explained in an idiot-proof way.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">What is TradingView?</div>
+        <div class="faq-answer">
+          <strong>TradingView</strong> stands as the foremost free online charting platform, delivering real-time market data across stocks, cryptocurrencies, forex, and commodities. Esteemed by traders and investors worldwide, its extensive array of features encompasses cutting-edge analysis tools, comprehensive financial data, dynamic charts, and an assortment of indicators.<br><br>
+          
+          <strong>Please note that you will be required to make a free TradingView account should you purchase our TradingView indicators, as they only operate on the TradingView platform. Please make an account prior to purchasing any plans as we collect your TradingView username at checkout.</strong><br><br>
+          
+          To create your TradingView account, visit: www.tradingview.com and locate the sign-in button situated at the top right corner of the site.<br>
+          Proceed by pressing "Sign up" on the subsequent page to initiate the account creation process.<br>
+          Once you have registered, you are ready to set up our indicators while indulging in the wealth of complimentary features provided by the TradingView platform.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">How do I add cryptXleak indicators on TradingView?</div>
+        <div class="faq-answer">
+          Upon plan purchase, you will be granted exclusive access to our indicators. This can be accessed through the indicator tab on TradingView.<br><br>
+          
+          To begin, navigate your way to the TradingView charts.<br>
+          Next, press on the indicator tab as shown in the image below.<br>
+          Finally, press the "Invite Only Scripts" tab and select your indicator.<br><br>
+          
+          The indicator is now applied. For further customization, simply locate the settings ⚙️ icon adjacent to its name. Please note that if the invite-only script tab is not shown for you, you have not yet been granted access to the purchased indicator, we ask that you wait patiently until we have done so.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">When will I get access to cryptXleak indicators?</div>
+        <div class="faq-answer">
+          You will receive access to cryptXleak indicators within 24 hours of your purchase. Please check your "Invite Only Scripts" tab in TradingView.<br><br>
+          
+          If you have not received access within 24 hours, please contact us here.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">How do I get alerts & notifications?</div>
+        <div class="faq-answer">
+          Setting up alerts on TradingView is a simple process. Firstly, make sure the indicator is applied to your chart. Then, press the 3 dots next to the indicator name and select "Add alert on cryptXleak" as shown below.<br><br>
+          
+          Once selected, the alert window will promptly appear, presenting a range of alert options. We offer 'Buy Signal' and 'Sell Signal' alerts to cater to your specific requirements. Choose the alerts that align with your preferences, opt for the trigger condition of "Once per bar close," and designate an expiration date. It's important to note that open-ended alerts are exclusively available to premium TradingView accounts.<br><br>
+          
+          Additionally, you have the flexibility to personalize your notification settings to ensure you receive timely alerts when signals are triggered. Simply navigate to the "Notifications" tab and select your preferred configurations.<br><br>
+          
+          Finally, once all the settings are finalized, click "Create" to activate your alerts, allowing them to be in full operation and ready to serve you effectively!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Does cryptXleak enter trades for me?</div>
+        <div class="faq-answer">
+          Our TradingView indicators do not buy or sell for you. Our TradingView tools only provide the analytical signals, and users are responsible for their own individual market entries.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">How do I add or remove features on TradingView indicators?</div>
+        <div class="faq-answer">
+          To modify the features of our indicators, including volatility bands, stop loss/take profit levels, support and resistance, and more, please follow these steps:<br><br>
+          
+          Locate the settings icon ⚙️ next to the indicator name, as illustrated below.<br>
+          Click on the settings icon to access the configuration options.<br><br>
+          
+          Additionally, you have the flexibility to personalize your desired stop loss and take profit levels.<br><br>
+          
+          By following these instructions, you will be able to seamlessly add or remove features and tailor our indicators to suit your needs.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Do the indicators repaint or lag?</div>
+        <div class="faq-answer">
+          No. Our signals appear at candle close and there is no repainting or lag. This can be verified in replay mode on the platform.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">Can I use this tool on my phone or tablet?</div>
+        <div class="faq-answer">
+          Yes. TradingView indicators are compatible with any device that can run TradingView, such as computers, tablets and phones.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" tabindex="0">What are the cancellation and refund policies?</div>
+        <div class="faq-answer">
+          We maintain a strict no-refund policy and all purchases are considered final. Refunds will only be issued in the event of duplicate orders.<br><br>
+          
+          Customers are free to cancel their subscriptions at any time without incurring any charges.<br><br>
+          
+          By engaging with cryptXleak, you acknowledge and agree to abide by the terms outlined in this policy.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="text/javascript">
+    // FAQ Toggle Funktion
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => {
+          const answer = q.nextElementSibling;
+          const isOpen = answer.classList.contains('show');
+          
+          // Close all answers first
+          document.querySelectorAll('.faq-answer').forEach(a => {
+            a.classList.remove('show');
+            a.style.display = 'none';
+          });
+          document.querySelectorAll('.faq-question').forEach(question => {
+            question.classList.remove('active');
+          });
+          
+          // If this answer wasn't open, open it
+          if (!isOpen) {
+            answer.classList.add('show');
+            answer.style.display = 'block';
+            q.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
