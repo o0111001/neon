@@ -26,7 +26,7 @@
 
     body {
       margin: 0; 
-      background: #020510; 
+      background: #0a1428; 
       color: var(--text-light);
       font-family: var(--font-sans); 
       line-height: 1.6;
@@ -35,7 +35,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Interactive Neon Dark Blue Background */
+    /* Interactive Subtle Blue Background */
     body::before {
       content: '';
       position: fixed;
@@ -43,7 +43,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(0, 30, 80, 0.15), rgba(0, 15, 40, 0.08));
+      background: radial-gradient(circle at center, rgba(20, 40, 80, 0.1), rgba(10, 25, 50, 0.05));
       animation: neonPulse 8s ease-in-out infinite;
       z-index: -2;
       pointer-events: none;
@@ -52,19 +52,19 @@
 
     @keyframes neonPulse {
       0%, 100% { 
-        background: radial-gradient(circle at center, rgba(0, 30, 80, 0.15), rgba(0, 15, 40, 0.08));
-        opacity: 0.8;
+        background: radial-gradient(circle at center, rgba(20, 40, 80, 0.1), rgba(10, 25, 50, 0.05));
+        opacity: 0.6;
       }
       50% { 
-        background: radial-gradient(circle at center, rgba(0, 50, 120, 0.25), rgba(0, 30, 80, 0.15));
-        opacity: 1;
+        background: radial-gradient(circle at center, rgba(30, 60, 120, 0.15), rgba(15, 35, 70, 0.08));
+        opacity: 0.8;
       }
     }
 
     body:hover::before {
-      background: radial-gradient(circle at center, rgba(0, 80, 160, 0.35), rgba(0, 50, 120, 0.25)) !important;
+      background: radial-gradient(circle at center, rgba(40, 80, 160, 0.2), rgba(25, 50, 100, 0.12)) !important;
       animation-duration: 3s;
-      opacity: 1;
+      opacity: 0.9;
     }
 
     header {
@@ -670,6 +670,131 @@
       hyphens: auto;
     }
 
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--neon-blue);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+      background: rgba(0, 208, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      background: linear-gradient(135deg, rgba(17, 17, 17, 0.95), rgba(30, 0, 50, 0.9));
+      margin: 2% auto;
+      padding: 2rem;
+      border: 1px solid rgba(0, 208, 255, 0.3);
+      border-radius: 15px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 8px 32px rgba(0, 208, 255, 0.3);
+      backdrop-filter: blur(15px);
+      color: var(--text-light);
+    }
+
+    .close {
+      color: var(--neon-blue);
+      float: right;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .close:hover {
+      color: #fff;
+    }
+
+    .modal h2 {
+      color: var(--neon-blue);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .modal h3 {
+      color: var(--neon-orange);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .modal p, .modal ul {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .modal ul {
+      padding-left: 1.5rem;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--neon-blue);
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid rgba(0, 208, 255, 0.3);
+      border-radius: 8px;
+      background: rgba(17, 17, 17, 0.7);
+      color: var(--text-light);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 0 2px rgba(0, 208, 255, 0.2);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
     .footer-disclaimer strong {
       color: var(--neon-orange);
       font-weight: 600;
@@ -678,6 +803,16 @@
     @media (max-width: 768px) {
       footer {
         padding: 2rem 1rem 1.5rem 1rem;
+      }
+      
+      .footer-links {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .footer-links a {
+        font-size: 0.9rem;
       }
       
       .footer-disclaimer {
@@ -696,6 +831,12 @@
       .system-highlight {
         font-size: 1rem;
         padding: 1.2rem;
+      }
+      
+      .modal-content {
+        margin: 5% auto;
+        width: 95%;
+        padding: 1.5rem;
       }
     }
 
@@ -958,7 +1099,7 @@
     </section>
 
     <section class="ai-chat" aria-label="AI Support Chat">
-      <h3>Trading Chat Bot:</h3>
+      <h3>Trading Teacher Bot:</h3>
       <div class="chat-bot-container">
         <iframe 
           src="https://cdn.botpress.cloud/webchat/v3.0/shareable.html?configUrl=https://files.bpcontent.cloud/2025/06/09/18/20250609185818-DL13RK29.json"
@@ -1097,9 +1238,145 @@
 
   </main>
 
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('contactModal')">&times;</span>
+      <h2>Contact Us</h2>
+      <div class="contact-form">
+        <form action="mailto:hey@cryptxleak.com" method="post" enctype="text/plain">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required placeholder="Please describe your inquiry..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+        <p style="margin-top: 1rem; color: var(--text-muted); text-align: center;">
+          Or email us directly: <a href="mailto:hey@cryptxleak.com" style="color: var(--neon-blue);">hey@cryptxleak.com</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms Modal -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('termsModal')">&times;</span>
+      <h2>Terms & Conditions</h2>
+      <p>Please read these Terms and Conditions carefully before using CryptxLeak. These Terms set forth the terms and conditions governing your use of the CryptxLeak website and the services offered by CryptxLeak. By accessing or using the CryptxLeak website or any of its services, you acknowledge that you have read, understood, and agree to be bound by these Terms.</p>
+      
+      <h3>Disclaimer</h3>
+      <p>Please note that our website is intended solely for educational purposes and should not be regarded as financial advice. By accessing any materials or utilizing the information provided on this site, you acknowledge that the content and general information offered by CryptxLeak are for educational purposes only. Trading involves inherent risks, and you must be fully aware of these risks and be willing to accept any level of risk when investing in financial markets. While the trading tools provided are believed to be reliable, we do not guarantee profits, completeness or accuracy. Please note that future performance of trading strategies is fundamentally unknown, and past results do not guarantee future performance.</p>
+      
+      <h3>Ownership and Purpose</h3>
+      <p>FlowPro Bot, Pace Pro, Pro Scalper and ProfitAlgo are all owned and operated by CryptxLeak. CryptxLeak is an online platform providing educational content and tools for informational purposes only. It is important to note that CryptxLeak does not provide financial advice or recommendations. The educational materials and indicators provided by CryptxLeak are intended to assist users in their understanding of trading strategies, but any trading decisions made based on the information provided are solely the responsibility of the user.</p>
+      
+      <h3>License</h3>
+      <p>Unless otherwise stated, CryptxLeak and/or its licensors retain the intellectual property rights for all materials on CryptxLeak. All intellectual property rights are reserved. You may access these materials from CryptxLeak for your personal use, subject to the restrictions set forth in these terms and conditions.</p>
+      <p>You are prohibited from:</p>
+      <ul>
+        <li>Republishing materials from CryptxLeak</li>
+        <li>Selling, renting, or sub-licensing materials from CryptxLeak</li>
+        <li>Reproducing, duplicating, or copying materials from CryptxLeak</li>
+        <li>Redistributing content from CryptxLeak</li>
+      </ul>
+      
+      <h3>Age Restriction</h3>
+      <p>To use the CryptxLeak Service, you must be at least 18 years of age or the legal age of majority in your jurisdiction. By accessing or using our service, you represent and warrant that you meet this age requirement and have the legal authority to enter into these Terms.</p>
+      
+      <h3>Subscription and Cancellation</h3>
+      <p>CryptxLeak operates on a subscription basis, your subscription will be active until cancelled. Upon completion of the checkout process, our objective is to provide customers with product access within 24 hours of purchase; however, immediate access cannot be guaranteed. CryptxLeak reserves the right to reject access at our discretion if deemed necessary. Users have the freedom to cancel their subscription at any time without incurring any charges. To cancel your subscription, please follow the instructions provided on the CryptxLeak website. Please note that cancelling your subscription does not entitle you to any refunds or reimbursements for the unused portion of your subscription.</p>
+      
+      <h3>Limitation of Liability</h3>
+      <p>CryptxLeak emphasizes that the Service is for educational purposes only and does not constitute financial advice. CryptxLeak and its owners, employees, and affiliates are not liable for any monetary loss or damages incurred by users while using the service. Users are strongly advised to seek advice from a professional financial advisor before engaging in any trading activities.</p>
+      
+      <h3>Governing Law and Jurisdiction</h3>
+      <p>These Terms shall be governed by and construed in accordance with the laws of Ireland. Any claims or disputes arising out of or in connection with these Terms or the use of the Service shall be brought exclusively in the courts. The United Nations Convention on Contracts for the International Sale of Goods is expressly excluded from application to these Terms.</p>
+      
+      <p style="margin-top: 2rem;"><strong>Contact:</strong> If you have any questions or concerns about these Terms and Conditions, please contact us at <a href="mailto:hey@cryptxleak.com" style="color: var(--neon-blue);">hey@cryptxleak.com</a></p>
+    </div>
+  </div>
+
+  <!-- Privacy Modal -->
+  <div id="privacyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+      <h2>Privacy Policy</h2>
+      <p>At CryptxLeak, we recognize the increasing global concerns about the protection of personal information. It is essential for us to implement and provide our site visitors with a concise privacy policy. This document outlines the ways in which we collect, use, disclose, and manage the data of our visitors and customers, fulfilling our legal obligation to protect their privacy.</p>
+      
+      <h3>Collection of Information</h3>
+      <p>We collect various types of personal information from our site visitors. This information may include email addresses, names, IP addresses, billing details, social security numbers, and other relevant details. The collected information can be provided voluntarily by visitors and users or collected automatically through monitoring tools. Upon checkout, you agree to granting us access to your TradingView username.</p>
+      
+      <h3>Methods of Information Collection</h3>
+      <p>We collect personal information through various methods on our website. This may include when a client sends us a message through a contact form or makes a purchase on our website. Rest assured that any personal information collected will only be used for the specific purposes stated.</p>
+      
+      <h3>Purpose of Information Collection</h3>
+      <p>We collect personal information to serve specific purposes that benefit our site visitors and clients. These purposes may include email marketing campaigns, order fulfillment, shipping, and other relevant activities related to our services. The collected information will be used solely for these stated reasons.</p>
+      
+      <h3>Storage, Usage, Sharing, and Disclosure of Personal Information</h3>
+      <p>We are committed to ensuring the secure storage and usage of the personal information collected from our site visitors. We employ appropriate measures to safeguard this information. It's important to note that we may share such information with third-party services and legal enforcement agencies in accordance with relevant local regulations.</p>
+      
+      <h3>Communication with Site Visitors</h3>
+      <p>We communicate with our site visitors through various means, such as email or text messages, for purposes such as marketing campaigns, promotions, and updates. By providing their personal information on our website, visitors consent to receiving such messages. However, we also provide an option for visitors to opt out of receiving these communications.</p>
+      
+      <h3>Use of Cookies and Tracking Tools</h3>
+      <p>Our website may utilize cookies and other tracking tools to track personal information. It's important to be aware of the tracking tools employed, such as cookies, flash cookies, web beacons, and their purpose.</p>
+      
+      <h3>Withdrawing Consent and Changing/Deleting Information</h3>
+      <p>We provide a mechanism for site visitors to withdraw their consent for the collection of personal information. Additionally, visitors can request changes or deletion of the information collected. For such requests, please contact us at <a href="mailto:hey@cryptxleak.com" style="color: var(--neon-blue);">hey@cryptxleak.com</a></p>
+      
+      <h3>Privacy Policy Updates</h3>
+      <p>We reserve the right to modify this privacy policy at any time. It is advisable to review this policy frequently for changes and clarifications. Material changes to the policy will be notified on our website to ensure awareness of the information we collect, how we use it, and under what circumstances we may disclose it.</p>
+    </div>
+  </div>
+
+  <!-- Refund Modal -->
+  <div id="refundModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('refundModal')">&times;</span>
+      <h2>Refund Policy</h2>
+      <h3>No Refund Policy</h3>
+      <p>CryptxLeak strictly adheres to a <strong>no refund policy</strong>, except in the case of duplicate orders. All purchases are considered final.</p>
+      
+      <h3>Duplicate Orders</h3>
+      <p>If you believe you have been charged for a duplicate order, please contact our customer support for assistance at <a href="mailto:hey@cryptxleak.com" style="color: var(--neon-blue);">hey@cryptxleak.com</a></p>
+      
+      <h3>Subscription Cancellation</h3>
+      <p>Users have the freedom to cancel their subscription at any time without incurring any charges. To cancel your subscription, please follow the instructions provided on the CryptxLeak website. Please note that cancelling your subscription does not entitle you to any refunds or reimbursements for the unused portion of your subscription.</p>
+      
+      <h3>Educational Purpose</h3>
+      <p>Please remember that CryptxLeak services are for educational purposes only and do not constitute financial advice. By purchasing our services, you acknowledge and accept this policy.</p>
+      
+      <h3>Contact Support</h3>
+      <p>If you encounter any issues or have questions about your purchase, please contact us at <a href="mailto:hey@cryptxleak.com" style="color: var(--neon-blue);">hey@cryptxleak.com</a> and we will be happy to assist you.</p>
+      
+      <p style="margin-top: 2rem; padding: 1rem; background: rgba(255, 102, 0, 0.1); border-radius: 8px; border-left: 3px solid var(--neon-orange);">
+        <strong>Important:</strong> By engaging with CryptxLeak and making a purchase, you acknowledge and agree to abide by the terms outlined in this refund policy.
+      </p>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-content">
       <div class="footer-brand">cryptX 2025</div>
+      <div class="footer-links">
+        <a href="#contact" onclick="showContactForm()">Contact</a>
+        <a href="#terms" onclick="showTerms()">Terms & Conditions</a>
+        <a href="#privacy" onclick="showPrivacy()">Privacy Policy</a>
+        <a href="#refund" onclick="showRefund()">Refund Policy</a>
+      </div>
       <div class="footer-disclaimer">
         <strong>Cryptxleak</strong> and its affiliates do not operate as registered financial advisor. The content and services provided by <strong>cryptXleak</strong> and its website are solely intended for educational purposes and should not be interpreted as financial advice. Trading involves significant risk and may not be suitable for all investors. You could lose all or more than your initial investment.
       </div>
@@ -1107,7 +1384,7 @@
   </footer>
 
   <script type="text/javascript">
-    // FAQ Toggle Funktion
+    // FAQ Toggle Function
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.faq-question').forEach(q => {
         q.addEventListener('click', () => {
@@ -1131,6 +1408,56 @@
           }
         });
       });
+    });
+
+    // Modal Functions
+    function showContactForm() {
+      document.getElementById('contactModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showTerms() {
+      document.getElementById('termsModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showPrivacy() {
+      document.getElementById('privacyModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showRefund() {
+      document.getElementById('refundModal').style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }
+      });
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+          if (modal.style.display === 'block') {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+          }
+        });
+      }
     });
   </script>
 </body>
