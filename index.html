@@ -15,8 +15,8 @@
       --neon-cyan: #00ffff;
       --dark-bg: #0a0a0a;
       --dark-card: #111;
-      --text-light: #eee;
-      --text-muted: #777;
+      --text-light: #f5f5f5;
+      --text-muted: #999;
       --btn-radius: 8px;
       --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       --glow-intensity: 0.4;
@@ -171,7 +171,7 @@
     }
 
     .btn-primary {
-      background: linear-gradient(45deg, var(--neon-orange), #ff8800, var(--neon-orange));
+      background: linear-gradient(45deg, #ff6600, #ff8800, #ff6600);
       background-size: 200% 200%;
       padding: 1.2rem 2.5rem; 
       color: #000;
@@ -179,12 +179,11 @@
       font-size: 1.1rem; 
       border-radius: var(--btn-radius);
       cursor: pointer; 
-      box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
+      box-shadow: 0 4px 12px rgba(255, 102, 0, 0.3);
       transition: all 0.3s ease;
       border: none; 
       text-decoration: none;
       display: inline-block;
-      animation: orangeGlow 3s ease infinite;
       position: relative;
       overflow: hidden;
       text-align: center;
@@ -194,25 +193,21 @@
     @keyframes orangeGlow {
       0% { 
         background-position: 0% 50%; 
-        box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
-        text-shadow: 0 0 8px rgba(255, 102, 0, 0.8);
+        box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
       }
       50% { 
         background-position: 100% 50%; 
-        box-shadow: 0 0 30px rgba(255, 102, 0, 0.9);
-        text-shadow: 0 0 12px rgba(255, 102, 0, 1);
+        box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
       }
       100% { 
         background-position: 0% 50%; 
-        box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
-        text-shadow: 0 0 8px rgba(255, 102, 0, 0.8);
+        box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
       }
     }
 
     .btn-primary:hover {
       transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 8px 35px rgba(255, 102, 0, 0.8);
-      text-shadow: 0 0 15px rgba(255, 102, 0, 1);
+      box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
     }
 
     .packages {
@@ -250,25 +245,41 @@
       border-color: rgba(255, 102, 0, 0.6);
       box-shadow: 0 8px 25px rgba(255, 102, 0, 0.4);
       transform: scale(1.05);
+      transition: all 0.4s ease;
+    }
+
+    .package-card:nth-child(2):hover {
+      transform: scale(1.08) translateY(-10px);
+      box-shadow: 0 20px 50px rgba(255, 102, 0, 0.7);
+      border-color: rgba(255, 102, 0, 1);
+      background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(40, 10, 60, 0.8));
     }
 
     .package-card h3 {
       margin-top: 0; 
       margin-bottom: 1rem;
-      font-size: 1.4rem;
-      color: var(--neon-orange);
-      text-shadow: 0 0 10px var(--neon-orange);
+      font-size: 1.3rem;
+      color: #ff6600;
       text-align: center;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
     }
 
     .package-price {
-      font-size: 2.5rem; 
-      font-weight: 900; 
-      color: var(--neon-orange);
-      text-shadow: 0 0 15px var(--neon-orange);
-      margin-bottom: 1rem;
+      font-size: 2rem; 
+      font-weight: 700; 
+      color: #ff6600;
+      margin-bottom: 1.5rem;
       text-align: center;
+      letter-spacing: 0.02em;
+      position: relative;
+      z-index: 10;
+      line-height: 1;
+      font-family: var(--font-sans);
     }
+
+
 
     .package-card > p {
       margin-bottom: 1.5rem;
@@ -348,15 +359,22 @@
     }
 
     .system-highlight {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      color: var(--neon-orange);
-      text-shadow: 0 0 10px var(--neon-orange);
-      padding: 1rem;
+      color: #ff6600;
+      padding: 1.5rem;
       background: rgba(255, 102, 0, 0.1);
       border-radius: 10px;
-      border: 1px solid rgba(255, 102, 0, 0.3);
+      border: 2px solid rgba(255, 102, 0, 0.4);
+      letter-spacing: 0.02em;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      line-height: 1.4;
+      font-family: var(--font-sans);
     }
+
+
 
     /* Customer Testimonials Section */
     .testimonials {
@@ -433,10 +451,12 @@
     .testimonial-text {
       font-size: 1.1rem;
       line-height: 1.6;
-      color: var(--text-light);
+      color: #f0f0f0;
       margin-bottom: 1.5rem;
       font-style: italic;
       flex-grow: 1;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      font-weight: 400;
     }
 
     .testimonial-author {
@@ -614,6 +634,71 @@
       outline-offset: 2px;
     }
 
+    /* Footer Styles */
+    footer {
+      margin-top: 6rem;
+      padding: 3rem 2rem 2rem 2rem;
+      background: linear-gradient(135deg, rgba(0, 15, 30, 0.95) 0%, rgba(0, 25, 50, 0.9) 30%, rgba(10, 0, 30, 0.9) 70%, rgba(0, 15, 30, 0.95) 100%);
+      backdrop-filter: blur(15px);
+      border-top: 2px solid rgba(0, 208, 255, 0.4);
+      text-align: center;
+      position: relative;
+      box-shadow: 0 -4px 20px rgba(0, 208, 255, 0.1);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--text-light);
+    }
+
+    .footer-brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #00d0ff;
+      text-shadow: 0 0 1px rgba(0, 208, 255, 0.3);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-disclaimer {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .footer-disclaimer strong {
+      color: var(--neon-orange);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      footer {
+        padding: 2rem 1rem 1.5rem 1rem;
+      }
+      
+      .footer-disclaimer {
+        font-size: 0.85rem;
+        text-align: left;
+      }
+      
+      .package-price {
+        font-size: 1.8rem;
+      }
+      
+      .package-card h3 {
+        font-size: 1.2rem;
+      }
+      
+      .system-highlight {
+        font-size: 1rem;
+        padding: 1.2rem;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -632,7 +717,7 @@
     <section class="packages" aria-label="Package Offers">
       <div class="package-card">
         <h3>🟢 Basic Package</h3>
-        <div class="package-price">CHF 179.–</div>
+        <div class="package-price">287 €</div>
         <p><strong>Ideal for Beginners & Curious Minds.</strong></p>
         <div class="package-description">
           Get access to our proven <strong>Basic Indicator</strong>, equipped with over 20 intelligent modules for your first profitable setups.
@@ -649,7 +734,7 @@
 
       <div class="package-card">
         <h3>🔵 Pro Package</h3>
-        <div class="package-price">CHF 249.–</div>
+        <div class="package-price">349 €</div>
         <p><strong>For ambitious traders who act daily.</strong></p>
         <div class="package-description">
           Use the <strong>Pro Indicator</strong> with over 30 AI components – trained on current market behavior, manipulation zones and volume distortions.
@@ -666,7 +751,7 @@
 
       <div class="package-card">
         <h3>🔴 Premium Package</h3>
-        <div class="package-price">CHF 649.–</div>
+        <div class="package-price">639 €</div>
         <p><strong>Maximum control for serious professionals.</strong></p>
         <div class="package-description">
           The <strong>Premium Indicator</strong> combines over 40 AI-powered signals including multi-timeframe scanning, liquidity tracking & high-volatility pulse detection.
@@ -698,195 +783,150 @@
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>T.S., Early 30s, DE</span>
           </div>
           <div class="testimonial-text">
-            "I’ve used dozens of indicators before, but none came close to how CryptXleak reads the market. It doesn’t just show signals but it understands market psychology. F***** Game changer."
-          </div>
-          <div class="testimonial-author">
-            <span>@IndependentTrader_Sarah</span>
+            "Through CryptX I was able to learn a lot about cryptocurrencies and the market. His coaching not only helped me financially, but also in terms of independence. Working with him was always productive and goal-oriented. The investment for cooperation was a good decision."
           </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>DeltaShift</span>
           </div>
           <div class="testimonial-text">
-            "And by the way, huge respect for your project! Here it really builds momentum because the content and the calls are absolutely on point..."
-          </div>
-          <div class="testimonial-author">
-            <span>@RespectfulTrader_Mark</span>
+            "And by the way, huge respect for all this! Here it really builds momentum because the content and the calls are absolutely brilliant."
           </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>GhostPattern</span>
           </div>
           <div class="testimonial-text">
-            "You can't give us any better feedback than this. You will be enthusiastic and quickly notice that we are something different than those out there who calculate everything full of hype for everyone. 💙"
-          </div>
-          <div class="testimonial-author">
-            <span>@GratefulClient_Lisa</span>
+            "I used to overthink every fkn setup. Now I just wait for the zones this thing marks. If it doesn't light up, I don't touch it. I'm finally not trading out of boredom.💙"
           </div>
         </div>
-
+          
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>Early 30s, self taught trader</span>
           </div>
           <div class="testimonial-text">
             "You can see that very clearly! The fact that you are directly approachable etc. makes an insane difference. With you I can say I stand 💯 behind it."
           </div>
-          <div class="testimonial-author">
-            <span>@LoyalSupporter_Dave</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>ColdSetup</span>
           </div>
           <div class="testimonial-text">
             "Started in January 2022. Didn't expect much and was surprised by the world. Knowledge 💯 Concept 💯 Support 💯 Many thanks to every single team member 🙏 The best community!"
           </div>
-          <div class="testimonial-author">
-            <span>@Community_Member_2022</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>maxAK47</span>
           </div>
           <div class="testimonial-text">
             "Haven't been with it for long but can already say I've learned a lot. The live coaching and market analysis are amazing. Keep it up! Special praise to the traders!"
           </div>
-          <div class="testimonial-author">
-            <span>@NewLearner_John</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>d4nnybtc</span>
           </div>
           <div class="testimonial-text">
             "Hello dear CryptX, I wanted to thank you for standing by my side with advice and action. You changed my mindset positively. Together I have taken the first steps in the right direction for investment. Every single investment tip from you I implemented and was able to multiply my wealth many times over. I'm happy that I have such a competent friend by my side! Thank you for everything ❤️"
           </div>
-          <div class="testimonial-author">
-            <span>@TransformedInvestor_Emma</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>ayartnotai</span>
           </div>
           <div class="testimonial-text">
             "CryptX is unique as a coach and supporter. His general expertise about the crypto market keeps him always up to date with what the market is doing, and he shares this transparently with his customers. Additionally, it's worth mentioning that he places great value on fair customer interaction. Thanks from me for the great support."
           </div>
-          <div class="testimonial-author">
-            <span>@TradingPro_Mike</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>rafi.trades</span>
           </div>
           <div class="testimonial-text">
             "I remember when CryptX started with crypto. Without support from others, only believing in himself. Today I see him with successful results, which helped me build my portfolio. Thanks to him I can ask for help with any investment question. My investment could increase by 30% in the shortest time."
           </div>
-          <div class="testimonial-author">
-            <span>@CryptoInvestor_Alex</span>
-          </div>
         </div>
-
+          
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>s1m0n_fx</span>
           </div>
           <div class="testimonial-text">
             "CryptX helped me build a comfortable and automated trading bot setup. Thanks to using the most modern technologies, I have the risk very well under control."
           </div>
-          <div class="testimonial-author">
-            <span>@AutomatedTrader_Tom</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>nico0o0o0</span>
           </div>
           <div class="testimonial-text">
             "I feel honoured to be an early part of the growing cryptx unit."
           </div>
-          <div class="testimonial-author">
-            <span>@EarlyAdopter_Chris</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>carlos.eth</span>
           </div>
           <div class="testimonial-text">
             "I've spent 3 years jumping between tools. This is the first one that actually shows me where and why things are happening. Not just green = buy."
           </div>
-          <div class="testimonial-author">
-            <span>@ExperiencedTrader_Alex</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>finch91</span>
           </div>
           <div class="testimonial-text">
             "What used to be gut feeling is now a system. The Pro Indicator filters fakeouts before I even notice them."
           </div>
-          <div class="testimonial-author">
-            <span>@SystemTrader_Ben</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>sC4lp3rMIKE</span>
           </div>
           <div class="testimonial-text">
             "Took two weeks and the Premium package paid for itself. Not because of magic – but because I finally understand why a setup works."
           </div>
-          <div class="testimonial-author">
-            <span>@ProfitableTrader_Dan</span>
-          </div>
         </div>
 
         <div class="testimonial-card">
           <div class="telegram-header">
             <div class="telegram-icon">📱</div>
-            <span>Telegram Feedback</span>
+            <span>Luc001skalp</span>
           </div>
           <div class="testimonial-text">
             "I'm more of a scalper guy. What's wild is – this indicator doesn't chase every move. It waits. That's the edge."
-          </div>
-          <div class="testimonial-author">
-            <span>@ScalperTrader_Mike</span>
           </div>
         </div>
       </div>
@@ -1056,6 +1096,15 @@
     </section>
 
   </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">cryptX 2025</div>
+      <div class="footer-disclaimer">
+        <strong>Cryptxleak</strong> and its affiliates do not operate as registered financial advisor. The content and services provided by <strong>cryptXleak</strong> and its website are solely intended for educational purposes and should not be interpreted as financial advice. Trading involves significant risk and may not be suitable for all investors. You could lose all or more than your initial investment.
+      </div>
+    </div>
+  </footer>
 
   <script type="text/javascript">
     // FAQ Toggle Funktion
